@@ -14,6 +14,14 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
+app.get('/about-us.ejs', function(request, response) {
+  response.render('pages/about-us');
+});
+
+app.get('/activity.ejs', function(request, response) {
+  response.render('pages/activity.ejs');
+});
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
