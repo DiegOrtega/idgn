@@ -1661,7 +1661,7 @@
 			 */
 			
 			_isElement: function(el){
-				if(window.HTMLElement){
+				if(window.ejsElement){
 					return el instanceof HTMLElement;
 				} else {
 					return (

@@ -2392,7 +2392,7 @@ transition: all ease-out 0.3s;}
   top: 0;
 }
 
-/* Inspirated from  http://www.alessioatzeni.com/wp-content/tutorials/html-css/CSS3-loading-animation-loop/index.html */
+/* Inspirated from  http://www.alessioatzeni.com/wp-content/tutorials/html-css/CSS3-loading-animation-loop/index.ejs */
 .ouro {
     position: relative;
     display:inline-block;

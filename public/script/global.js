@@ -709,12 +709,12 @@ $('.s-color').on('click', function() {
 
 	$('.like-btn').on('click', function (e) {
 		e.preventDefault();
-		$(this).html('YOU LIKED PROJECT');
+		$(this).ejs('YOU LIKED PROJECT');
 	});
 
 	$('.add-btn').on('click', function (e) {
 		e.preventDefault();
-		$(this).html('YOU ADDED TO COLLECTION');
+		$(this).ejs('YOU ADDED TO COLLECTION');
 	});
 
 	$('.send-btn').on('click', function (e) {
