@@ -14,6 +14,10 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
+app.get('/index.ejs', function(request, response) {
+  response.render('pages/index');
+});
+
 app.get('/about-us.ejs', function(request, response) {
   response.render('pages/about-us');
 });
