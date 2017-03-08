@@ -29,7 +29,7 @@ console.log("session secret is:", config.sessionSecret);
 
 var client_id = '381fa9402ef049efab1c1a801beef662'; // Your client id
 var client_secret = config.sessionSecret; // Your secret
-var redirect_uri = 'http:\\\\localhost:5000\\callback'; // Your redirect uri
+var redirect_uri = 'http:\\\\too-cool-for-a-logo.herokuapp.com\\callback'; // Your redirect uri
 
 console.log("redirect_uri: " + redirect_uri);
 
