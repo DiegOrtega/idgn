@@ -29,7 +29,7 @@ console.log("session secret is:", config.sessionSecret);
 
 var client_id = '381fa9402ef049efab1c1a801beef662'; // Your client id
 var client_secret = config.sessionSecret; // Your secret
-var redirect_uri = 'https:\\\\too-cool-for-a-logo.herokuapp.com\\callback'; // Your redirect uri
+var redirect_uri = 'http:\\\\localhost:5000\\callback'; // Your redirect uri
 
 console.log("redirect_uri: " + redirect_uri);
 
@@ -38,7 +38,6 @@ console.log("redirect_uri: " + redirect_uri);
  * @param  {number} length The length of the string
  * @return {string} The generated string
  */
-
 var generateRandomString = function(length) {
   var text = '';
   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -56,7 +55,7 @@ var app = express();
 app.use(express.static(__dirname + '/public'))
    .use(cookieParser());
 
-app.get('/autorizacion', function(req, res) {
+app.get('/login', function(req, res) {
 
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
@@ -64,6 +63,8 @@ app.get('/autorizacion', function(req, res) {
   // your application requests authorization
   var scope = 'user-read-private user-read-email';
     
+   // your application requests authorization
+  var scope = 'user-read-private user-read-email';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -72,9 +73,18 @@ app.get('/autorizacion', function(req, res) {
       redirect_uri: redirect_uri,
       state: state
     }));
+    /*
+    res.writeHead(302, {
+        'Location': encodeURI("https://accounts.spotify.com/authorize/?client_id="+client_id+"&response_type=code&redirect_uri=http:\\\\localhost:5000\\callback&scope=playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private streaming user-follow-modify user-follow-read user-library-read user-library-modify user-read-private user-read-birthdate user-read-email&state=34fFs29kd09&show_dialog=true")
+    });
+    res.send();*/
     
     console.log("se termina la autorización desde cliente!");
     
+});
+
+app.get('/autorizacion', function(req, res){
+        res.render('pages/autorizacion');        
 });
 
 app.get('/callback', function(req, res) {
