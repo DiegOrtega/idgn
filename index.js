@@ -17,7 +17,7 @@ var fileName = "./secret-config.json"
 var config
 
 try {
-  config = require(fileName)
+  config = require(fileName);
 }
 catch (err) {
   config = {}
@@ -29,13 +29,16 @@ console.log("session secret is:", config.sessionSecret);
 
 var client_id = '381fa9402ef049efab1c1a801beef662'; // Your client id
 var client_secret = config.sessionSecret; // Your secret
-var redirect_uri = 'https://too-cool-for-a-logo.herokuapp.com/callback'; // Your redirect uri
+var redirect_uri = 'https:\\\\too-cool-for-a-logo.herokuapp.com\\callback'; // Your redirect uri
+
+console.log("redirect_uri: " + redirect_uri);
 
 /**
  * Generates a random string containing numbers and letters
  * @param  {number} length The length of the string
  * @return {string} The generated string
  */
+
 var generateRandomString = function(length) {
   var text = '';
   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -60,6 +63,7 @@ app.get('/autorizacion', function(req, res) {
 
   // your application requests authorization
   var scope = 'user-read-private user-read-email';
+    
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -68,12 +72,17 @@ app.get('/autorizacion', function(req, res) {
       redirect_uri: redirect_uri,
       state: state
     }));
+    
+    console.log("se termina la autorización desde cliente!");
+    
 });
 
 app.get('/callback', function(req, res) {
 
   // your application requests refresh and access tokens
   // after checking the state parameter
+    
+    console.log("Llegamos al callback!!");
 
   var code = req.query.code || null;
   var state = req.query.state || null;
@@ -131,8 +140,6 @@ app.get('/callback', function(req, res) {
     });
   }
 
-  response.render('pages/organization');
-    
 });
 
 app.get('/refresh_token', function(req, res) {
@@ -159,9 +166,8 @@ app.get('/refresh_token', function(req, res) {
   });
 });
 
-console.log('Listening on 8888');
-app.listen(8888);
-
+//console.log('Listening on 8888');
+//app.listen(5000);
 
 app.set('port', (process.env.PORT || 5000));
 
