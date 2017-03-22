@@ -49,12 +49,12 @@ if( app.get('port') == 5000 ){
 }else{
     var client_id = '381fa9402ef049efab1c1a801beef662'; // Your client id
     var client_secret = config.sessionSecret; // Your secret
-    var redirect_uri = 'https://too-cool-for-a-logo.herokuapp.com/'; // Your redirect uri
+    var redirect_uri = 'https://too-cool-for-a-logo.herokuapp.com/callback'; // Your redirect uri
 
     var spotifyApi = new SpotifyWebApi({
     clientId: '381fa9402ef049efab1c1a801beef662',
     clientSecret: config.sessionSecret,
-    redirectUri: 'https://too-cool-for-a-logo.herokuapp.com/' 
+    redirectUri: 'https://too-cool-for-a-logo.herokuapp.com/callback' 
 });
     
 };
