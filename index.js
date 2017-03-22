@@ -59,16 +59,6 @@ if( app.get('port') == 5000 ){
     
 };
 
-var client_id = '381fa9402ef049efab1c1a801beef662'; // Your client id
-var client_secret = config.sessionSecret; // Your secret
-var redirect_uri = 'http://localhost:5000/callback'; // Your redirect uri
-
-var spotifyApi = new SpotifyWebApi({
-    clientId: '381fa9402ef049efab1c1a801beef662',
-    clientSecret: config.sessionSecret,
-    redirectUri: 'http://localhost:5000/callback' 
-});
-
 console.log("redirect_uri: " + redirect_uri);
 
 /**
