@@ -21,6 +21,14 @@
 		    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	    <![endif]-->
 	</head>
+    
+    <style>
+        .verde {
+            color: #1DB954;
+        }
+        
+    </style>
+    
 	<body>
 
 	<!-- THE LOADER -->
@@ -79,82 +87,199 @@
 	<div id="content-block">
 		<div class="container custom-container be-detail-container">
 			<div class="row">
+                
 				<div class="col-md-9 col-md-push-3">
-					<div class="be-large-post">
-						<div class="info-block">
-							<div class="be-large-post-align">
-								<span><i class="fa fa-thumbs-o-up"></i> 253</span>
-								<span><i class="fa fa-eye"></i> 753</span>
-								<span><i class="fa fa-comment-o"></i> 50</span>
-							</div>
-						</div>
-						<div class="blog-content popup-gallery be-large-post-align">
-							<h5 class="be-post-title to">
-								Integer Blandit Velit Nec Purus Convallis
-							</h5>
-
-							<span class="be-text-tags">
-								<a href="blog-detail-2.ejs" class="be-post-tag">Interactiob design</a>, 
-								<a href="blog-detail-2.ejs" class="be-post-tag">UI/UX</a>,  
-								<a href="blog-detail-2.ejs" class="be-post-tag">Web Design</a>
-							</span>
-							<div class="clear"></div>
-							<div class="post-text">
-								<p>Fusce dolor libero, efficitur et lobortis at, faucibus nec nunc. Proin fermentum turpis eget nisi facilisis lobortis. Praesent malesuada facilisis maximus. Donec sed lobortis tortor. Ut nec lacinia sapien, sit amet dapibus magna. Vestibulum nunc ex, tempus et volutpat nec, convallis ut massa. Sed ultricies luctus ipsum in placerat.
-
-								<p>Mauris ultrices pharetra lectus sit amet commodo. Fusce ac sagittis magna. Nulla sed ligula sed dui tristique convallis non sit amet dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-
-								<div class="image-block">
-								    <a class="popup-a" href="img/l1.jpg">
-									<img src="img/l1.jpg" alt="">
-									</a>
-									<div class="image-text">Ut pulvinar tellus sed elit luctus aliquet. Suspendisse hendrerit sapien a aliquet porttitor. In hendrerit consequat neque eget egestas. In a consectetur felis. In euismod lectus eros, quis sollicitudin diam tincidunt sed. Duis rhoncus nunc in lobortis lacinia.</div>
-								</div>
-								    <a class="popup-a" href="img/l2.jpg">
-									<img src="img/l2.jpg" alt="">
-									</a>								
-
-								<p>Mauris sodales tellus vel felis dapibus, sit amet porta nibh egestas. Sed dignissim tellus quis sapien sagittis cursus. Cras porttitor auctor sapien, eu tempus nunc placerat nec. Donec metus tortor, dignissim at vehicula ac, lacinia vel massa. Quisque mollis dui lacus, et fermentum erat euismod in. Integer sit amet augue ligula.</p>
-
-								<div class="image-block">
-									    <a class="popup-a" href="img/l3.jpg">
-										<img src="img/l3.jpg" alt="">
-										</a>
-									<div class="image-text">Integer blandit velit nec purus convallis ullamcorper. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In blandit porttitor urna, eu ultrices enim volutpat ut.</div>									
-								</div>
-							</div>
-						</div>
-						<div class="be-large-post-align">
-							<h3 class="letf-menu-article">
-								Tags
-							</h3>
-							<div class="tags_block clearfix">
-								<ul>
-									<li><a href="blog-detail-2.ejs">photoshop</a></li>
-									<li><a href="blog-detail-2.ejs">national geographic</a></li>
-									<li><a href="blog-detail-2.ejs">nature</a></li>
-									<li><a href="blog-detail-2.ejs">responsive web design</a></li>
-									<li><a href="blog-detail-2.ejs">animals</a></li>
-									<li><a href="blog-detail-2.ejs">digital photography</a></li>
-								</ul>
-							</div>
-						</div>						
-					</div>
+					
+                     <h2>Your music related data:</h2>
+                    
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Variables</th>
+                                <td>What statiscally you like</td>
+                                <td>Data resulting from algorithmic process</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Danceability</th>
+                                <td><%=bailongo.toFixed(3)%>%</td>
+                                <td><%=bailongo2.toFixed(3)%>%</td>
+                            </tr>
+                            <tr>
+                                <th>Energy</th>
+                                <td><%=energia.toFixed(3)%>%</td>
+                                <td><%=energia2.toFixed(3)%>%</td>
+                            </tr>
+                            <tr>
+                                <th>Key</th>
+                                <% 
+                                switch(Math.round(fundamental)) {
+                                    case 0:
+                                        fundamental = 'C';
+                                        break;
+                                    case 1:
+                                        fundamental = 'C#/Db';
+                                        break;
+                                    case 2:
+                                        fundamental = 'D';
+                                        break;
+                                    case 3:
+                                        fundamental = 'D#/Eb';
+                                        break;
+                                    case 4:
+                                        fundamental = 'E';
+                                        break;
+                                    case 5:
+                                        fundamental = 'F';
+                                        break;
+                                    case 6:
+                                        fundamental = 'F#/Gb';
+                                        break;
+                                    case 7:
+                                        fundamental = 'G';
+                                        break;
+                                    case 8: 
+                                        fundamental = 'G#/Ab';
+                                        break;
+                                    case 9: 
+                                        fundamental = 'A';
+                                        break;
+                                    case 10: 
+                                        fundamental = 'A#/Bb';
+                                        break;
+                                    case 11: 
+                                        fundamental = 'B';
+                                        break;
+                                };
+                                switch(Math.round(fundamental2)) {
+                                    case 0:
+                                        fundamental2 = 'C';
+                                        break;
+                                    case 1:
+                                        fundamental2 = 'C#/Db';
+                                        break;
+                                    case 2:
+                                        fundamental2 = 'D';
+                                        break;
+                                    case 3:
+                                        fundamental2 = 'D#/Eb';
+                                        break;
+                                    case 4:
+                                        fundamental2 = 'E';
+                                        break;
+                                    case 5:
+                                        fundamental2 = 'F';
+                                        break;
+                                    case 6:
+                                        fundamental2 = 'F#/Gb';
+                                        break;
+                                    case 7:
+                                        fundamental2 = 'G';
+                                        break;
+                                    case 8: 
+                                        fundamental2 = 'G#/Ab';
+                                        break;
+                                    case 9: 
+                                        fundamental2 = 'A';
+                                        break;
+                                    case 10: 
+                                        fundamental2 = 'A#/Bb';
+                                        break;
+                                    case 11: 
+                                        fundamental2 = 'B';
+                                        break;
+                                } 
+                                %>
+                                <td><%=fundamental%></td>
+                                <td>Not proccesed data</td>
+                            </tr>
+                            <tr>
+                                <th>Loudness</th>
+                                <td><%=amplitud.toFixed(3)%> dB</td>
+                                <td>Not processed data</td>
+                            </tr>
+                            <tr>
+                                <th>Mode</th>
+                                <%
+                                switch(Math.round(modo)){
+                                    case 0:
+                                        modo = 'Minor';
+                                        break;
+                                    case 1:
+                                        modo = 'Major';
+                                        break;
+                                };
+                                switch(Math.round(modo2)){
+                                    case 0:
+                                        modo2 = 'Minor';
+                                        break;
+                                    case 1:
+                                        modo2 = 'Major';
+                                        break;
+                                };
+                                %>
+                                <td><%=modo%></td>
+                                <td>Not proccesed data</td>
+                            </tr>
+                            <tr>
+                                <th>Speechiness</th>
+                                <td><%=dialogo.toFixed(3)%>%</td>
+                                <td><%=dialogo2.toFixed(3)%>%</td>
+                            </tr>
+                            <tr>
+                                <th>Acousticness</th>
+                                <td><%=acustica.toFixed(3)%>%</td>
+                                <td><%=acustica2.toFixed(3)%>%</td>
+                            </tr>
+                            <tr>
+                                <th>Instrumentalness</th>
+                                <td><%=instrumental.toFixed(3)%>%</td>
+                                <td><%=instrumental2.toFixed(3)%>%</td>
+                            </tr>
+                            <tr>
+                                <th>Liveness</th>
+                                <td><%=audiencia.toFixed(3)%>%</td>
+                                <td><%=audiencia2.toFixed(3)%>%</td>
+                            </tr>
+                            <tr>
+                                <th>Valence</th>
+                                <td><%=positivismo.toFixed(3)%>%</td>
+                                <td><%=positivismo2.toFixed(3)%>%</td>
+                            </tr>
+                            <tr>
+                                <th>Tempo</th>
+                                <td><%=tempo.toFixed(3)%> BPM</td>
+                                <td>Not processed data</td>
+                            </tr>
+                            <tr>
+                                <th>Duration</th>
+                                <td><%=duracion%> mS</td>
+                                <td>not processed data</td>
+                            </tr>
+                            <tr>
+                                <th>Beats per bar</th>
+                                <td><%=Math.round(firma_tiempo)%></td>
+                                <td>Not processed data</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
 					<div class="row">
-						<div class="col-md-4">
+                            <% anti_playlist.tracks.forEach(function(records){ %>
+                               
+                            <div class="col-md-4">
 							<div class="be-post">
-								<a href="blog-detail-2.ejs" class="be-img-block">
-								<img src="img/p3.jpg" alt="omg">
+								<a href="<%=records.preview_url%>" target="_blank" class="be-img-block">
+								<img src="<%=records.album.images[0].url%>" alt="omg">
 								</a>
-								<a href="blog-detail-2.ejs" class="be-post-title">Colors of Ramadan</a>
+								<a href="blog-detail-2.ejs" class="be-post-title"><%= records.name %></a>
 								<span>
-									<a href="blog-detail-2.ejs" class="be-post-tag">Interaction Design</a>, 
-									<a href="blog-detail-2.ejs" class="be-post-tag">UI/UX</a>,  
-									<a href="blog-detail-2.ejs" class="be-post-tag">Web Design</a>
-								</span>
+									Popularidad: <%=records.popularity%> %
+ 								</span>
 								<div class="author-post">
 									<img src="img/a5.png" alt="" class="ava-author">
-									<span>by <a href="blog-detail-2.ejs">Hoang Nguyen</a></span>
+									<span>by <a href="blog-detail-2.ejs"><%=records.artists[0].name%></a></span>
 								</div>
 								<div class="info-block">
 									<span><i class="fa fa-thumbs-o-up"></i> 360</span>
@@ -162,51 +287,8 @@
 									<span><i class="fa fa-comment-o"></i> 20</span>
 								</div>
 							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="be-post">
-								<a href="blog-detail-2.ejs" class="be-img-block">
-								<img src="img/p4.jpg" alt="omg">
-								</a>
-								<a href="blog-detail-2.ejs" class="be-post-title">Leaving Home - L'Officiel Ukraine</a>
-								<span>
-									<a href="blog-detail-2.ejs" class="be-post-tag">Interaction Design</a>, 
-									<a href="blog-detail-2.ejs" class="be-post-tag">UI/UX</a>,  
-									<a href="blog-detail-2.ejs" class="be-post-tag">Web Design</a>
-								</span>
-								<div class="author-post">
-									<img src="img/a5.png" alt="" class="ava-author">
-									<span>by <a href="blog-detail-2.ejs">Hoang Nguyen</a></span>
-								</div>
-								<div class="info-block">
-									<span><i class="fa fa-thumbs-o-up"></i> 360</span>
-									<span><i class="fa fa-eye"></i> 789</span>
-									<span><i class="fa fa-comment-o"></i> 20</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="be-post">
-								<a href="blog-detail-2.ejs" class="be-img-block">
-								<img src="img/p5.jpg" alt="omg">
-								</a>
-								<a href="blog-detail-2.ejs" class="be-post-title">Drive Your World</a>
-								<span>
-									<a href="blog-detail-2.ejs" class="be-post-tag">Interaction Design</a>, 
-									<a href="blog-detail-2.ejs" class="be-post-tag">UI/UX</a>,  
-									<a href="blog-detail-2.ejs" class="be-post-tag">Web Design</a>
-								</span>
-								<div class="author-post">
-									<img src="img/a9.png" alt="" class="ava-author">
-									<span>by <a href="blog-detail-2.ejs">Hoang Nguyen</a></span>
-								</div>
-								<div class="info-block">
-									<span><i class="fa fa-thumbs-o-up"></i> 360</span>
-									<span><i class="fa fa-eye"></i> 789</span>
-									<span><i class="fa fa-comment-o"></i> 20</span>
-								</div>
-							</div>
-						</div>
+						  </div>
+                         <%  })%>
 					</div>
 					<div class="be-comment-block">
 						<h1 class="comments-title">Comments (3)</h1>
@@ -284,38 +366,38 @@
 				<div class="col-md-3 col-md-pull-9 left-feild">
 					<div class="be-user-block">
 						<div class="be-user-detail">
-							<a class="be-ava-user" href="blog-detail-2.ejs">
-								<img src="img/ava.png" alt=""> 
+							<a class="thumbnail" href="blog-detail-2.ejs">
+								<img src='<%=imagen_url%>' alt=""> 
 							</a>
-							<p class="be-use-name">Daniel Ng</p>
+							<p class="be-use-name"><%= nombre %></p>
 							<span class="be-user-info">
-								Singapore, Singapore
+								<%= pais%>
 							</span>
 						</div>
 						<div class="be-user-activity-block">
 							<div class="row">
-							<div class="col-lg-6">
-								<a href="blog-detail-2.ejs" class="be-user-activity-button be-follow-type"><i class="fa fa-plus"></i>FOLLOW</a>
+							<div class="col-lg-6 verde">
+								<p class="col-lg-6">Followers: <%=followers%></p>
 							</div>
 							<div class="col-lg-6">
 								<a href="blog-detail-2.ejs" class="col-lg-6 be-user-activity-button send-btn be-message-type"><i class="fa fa-envelope-o"></i>MESSAGE</a>
 							</div>
 							</div>
 						</div>
-						<h5 class="be-title">
+						<!-- <h5 class="be-title">
 							About Project
 						</h5>
 						<p class="be-text-userblock">
 							Fusce dolor libero, efficitur et lobortis at, faucibus nec nunc. Proin fermentum turpis eget nisi facilisis lobortis. Praesent malesuada facilisis maximus. Donec sed lobortis tortor. Ut nec lacinia sapien, sit amet dapibus magna.
-						</p>
+						</p> -->
 					</div>
-					<a href="blog-detail-2.ejs" class="be-button-vidget like-btn blue-style"><i class="fa fa-thumbs-o-up"></i>LIKE PROJECT</a>
-					<a href="blog-detail-2.ejs" class="be-button-vidget add-btn grey-style"><i class="fa fa-file-o"></i>ADD TO COLLECTION</a>
+					<!-- <a href="blog-detail-2.ejs" class="be-button-vidget like-btn blue-style"><i class="fa fa-thumbs-o-up"></i>LIKE PROJECT</a>
+					<a href="blog-detail-2.ejs" class="be-button-vidget add-btn grey-style"><i class="fa fa-file-o"></i>ADD TO COLLECTION</a> 
 					
-					<h3 class="letf-menu-article text-center">Recent Works</h3>					
+					<h3 class="left-menu-article text-center">Recent Works</h3>	 -->				
 					<div  class="swiper-container" data-loop="1" data-speed="500" data-center="0" data-slides-per-view="1">
-                        <div class="swiper-wrapper">
-                            	<div class="swiper-slide">
+                        <!-- <div class="swiper-wrapper">
+                            	 <div class="swiper-slide">
 	                            	<div class="be-post">
 										<a href="blog-detail-2.ejs" class="be-img-block">
 										<img src="img/p9.jpg" height="202" width="269" alt="omg">
@@ -336,7 +418,7 @@
 											<span><i class="fa fa-comment-o"></i> 50</span>
 										</div>
 									</div>
-	                            </div>
+	                            </div> 
 	                            <div class="swiper-slide">
 	                            	<div class="be-post">
 										<a href="blog-detail-2.ejs" class="be-img-block">
@@ -403,7 +485,7 @@
 										</div>
 									</div>
 	                            </div>
-                        </div>
+                        </div> -->
                         <div class="pagination">
                         	
                         </div>
