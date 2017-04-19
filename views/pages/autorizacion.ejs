@@ -1,8 +1,9 @@
 <!doctype html>
 <html>
   <head>
-    <title>Example of the Authorization Code flow with Spotify</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    
+      <% include ../partials/header.ejs  %>
+   
     <style type="text/css">
         
     body {
@@ -25,8 +26,7 @@
         }
         .contenedor{
             background-color: #e8e9eb;
-            border-radius: 200px;
-            opacity: 0.7;
+            border-radius: 20px;
         }
         
         .contenedor:hover {
@@ -44,7 +44,12 @@
     </style>
   </head>
 
+ 
+    
   <body>
+    
+      <% include ../pages/navbar.ejs %>
+      
     <div class="container-fluid"> 
       <div id="login" class="contenedor" style="margin-top:200px;">
         <h1>Industry Music Project</h1>
@@ -65,7 +70,7 @@
           </h3>
           <br>
           <div class="centro" style="text-align: center;">
-              <a href="/login" class="btn btn-primary" style="text-align: center; background-color: #f06543; border-color: #f06543;">POP-UP</a>
+              <a href="/login" class="btn btn-primary" style="text-align: center; background-color: #f06543; border-color: #f06543;">Pop-Up</a>
               <a href="/about-us.ejs" class="btn btn-primary" style="text-align: center; background-color: #6AE368; border-color: #6AE368;" target="_blank">How even?</a>
           </div>
           <br>
