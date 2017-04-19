@@ -3,10 +3,14 @@
 			<div class="row no_row row-header">
 <div class="brand-be">
 	<a href="index.ejs">
-		<img class=" be_logo logo-c active"  src="img/logo.png" alt="logo" >
+        
+                <h2 style=" margin-top:10px; color:silver; text-align: left; font-family: 'Orbitron', sans-serif;">IDGN</h2>
+           
+        
+		<!-- <img class=" be_logo logo-c active"  src="img/logo.png" alt="logo" >
 		<img class="logo-c be_logo" src="img/logo-green.png" alt="logo" >
 		<img  class="logo-c be_logo" src="img/logo-orang.png" alt="logo" >
-		<img class="logo-c be_logo" src="img/logo-red.png" alt="logo">
+		<img class="logo-c be_logo" src="img/logo-red.png" alt="logo"> -->
 	</a>
 </div>
 				<!-- <div class="header-menu-block">
@@ -27,8 +31,14 @@
 				</div> -->
 				<div class="login-header-block" style="margin-right:10px;">
 					<div class="login_block">
-						<a class="btn-login btn color-1 size-2 hover-2" href="/about-us.ejs"><i class="fa fa-info-circle"></i>
-						How even</a>
+                        <% if(ref){ %> 
+                            <a class="btn color-1 size-2 hover-2" href="/"><i class="fa fa-home fa-lg"></i>
+						      Try it!</a>
+                        <% }else{ %>
+                            <a class="btn color-1 size-2 hover-2" href="/about-us.ejs"><i class="fa fa-info-circle"></i>
+						      How even</a>
+                       <%  } %>
+						  
 					</div>	
 				</div>
 			</div>

@@ -7,7 +7,7 @@
     <style type="text/css">
         
     body {
-        background-image: url("/img/PRIMAVERART.JPG");
+        background-image: url("/img/background.jpeg");
         background-size: cover;
         background-attachment: scroll;
         }    
@@ -39,6 +39,57 @@
         a {
             
         }
+     
+        .popup {
+	-moz-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+	box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #637aad), color-stop(1, #5972a7));
+	background:-moz-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	background:-webkit-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	background:-o-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	background:-ms-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	background:linear-gradient(to bottom, #637aad 5%, #5972a7 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#637aad', endColorstr='#5972a7',GradientType=0);
+	background-color:#637aad;
+	border:1px solid #314179;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	font-weight:bold;
+	padding:12px 28px;
+	text-decoration:none;
+            
+}
+.popup:hover {
+		-moz-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+	box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #6ae368), color-stop(1, #2d4370));
+	background:-moz-linear-gradient(top, #6ae368 5%, #2d4370 100%);
+	background:-webkit-linear-gradient(top, #6ae368 5%, #2d4370 100%);
+	background:-o-linear-gradient(top, #6ae368 5%, #2d4370 100%);
+	background:-ms-linear-gradient(top, #6ae368 5%, #2d4370 100%);
+	background:linear-gradient(to bottom, #6ae368 5%, #2d4370 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6ae368', endColorstr='#2d4370',GradientType=0);
+	background-color:#6ae368;
+	border:1px solid #314179;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	font-weight:bold;
+	padding:12px 28px;
+	text-decoration:none;
+}
+.popup:active {
+	position:relative;
+	top:1px;
+}
+
         
         
     </style>
@@ -51,8 +102,9 @@
       <% include ../pages/navbar.ejs %>
       
     <div class="container-fluid"> 
-      <div id="login" class="contenedor" style="margin-top:200px;">
-        <h1>Industry Music Project</h1>
+      <div id="login" class="contenedor" style="margin-top:200px; font-family: 'Josefin Slab', serif;">
+          <br>
+        <h1>IDGN</h1>
           <br>
           <!-- <h4> 
             Social media feeds you. 
@@ -61,17 +113,16 @@
             They give you what you want. 
           <br>    
           </h4> -->
-          <h2 style="text-align: center; color:#313638;">What statistically you would not hear</h2>
+          <h2 style="text-align: center; color:#313638;">INteractive Deep Immersion into GENeric Audio </h2>
           <hr>
           <h4>
             
           </h4>
-            <h3>An opportunity to break the bubble
+            <h3>An opportunity to break our bubble
           </h3>
           <br>
           <div class="centro" style="text-align: center;">
-              <a href="/login" class="btn btn-primary" style="text-align: center; background-color: #f06543; border-color: #f06543;">Pop-Up</a>
-              <a href="/about-us.ejs" class="btn btn-primary" style="text-align: center; background-color: #6AE368; border-color: #6AE368;" target="_blank">How even?</a>
+              <a href="/login" class="btn btn-primary popup" style="text-align: center;">Pop-Up</a>
           </div>
           <br>
       </div>

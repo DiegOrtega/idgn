@@ -1,25 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>NGRNetwork</title>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<link rel="shortcut icon" href="img/favicon.png">
-    	<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="style/bootstrap.min.css">
-		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="style/icon.css">
-		<link rel="stylesheet" href="style/loader.css">
-		<link rel="stylesheet" href="style/idangerous.swiper.css">
-		<link rel="stylesheet" href="style/stylesheet.css">
-		<!--[if lt IE 10]>
-			<link rel="stylesheet" type="text/css" href="style/ie-9.css" />
-		<![endif]-->		
-		<!--[if lt IE 9]>
-		    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	    <![endif]-->
-	    
+		<% include ../partials/header.ejs  %>
 	</head>
 	<body>
 
@@ -36,43 +18,10 @@
 			</p>
 		</div>
     </div>
+        
 	<!-- THE HEADER -->
-	<header>
-		<div class="container-fluid custom-container">
-			<div class="row no_row row-header">
-<div class="brand-be">
-	<a href="index.ejs">
-		<img class=" be_logo logo-c active"  src="img/logo.png" alt="logo" >
-		<img class="logo-c be_logo" src="img/logo-green.png" alt="logo" >
-		<img  class="logo-c be_logo" src="img/logo-orang.png" alt="logo" >
-		<img class="logo-c be_logo" src="img/logo-red.png" alt="logo">
-	</a>
-</div>
-				<div class="header-menu-block">
-					<button class="cmn-toggle-switch cmn-toggle-switch__htx"><span></span></button>
-					<ul class="header-menu" id="one">
-						<li><a href="activity.ejs">Activity</a></li>
-						<li><a href="search.ejs">Discover</a>
-							<ul>
-								<li><a href="search.ejs">Explore</a></li>
-								<li><a href="people.ejs">People</a></li>
-								<li><a href="gallery.ejs">Galleries</a></li>
-							</ul>
-						</li>
-						<li><a href="author-login.ejs">My Portfolio</a></li>
-						<li><a href="site-map.ejs">Site Map</a></li>
-						<li id="ad-work-li"><a id="add-work-btn" class="btn color-1" href="work.ejs">Add Work </a></li>
-					</ul>
-				</div>
-				<div class="login-header-block">
-					<div class="login_block">
-						<a class="btn-login btn color-1 size-2 hover-2" href="blog-detail-2.ejs"><i class="fa fa-user"></i>
-						Log in</a>
-					</div>	
-				</div>
-			</div>
-		</div>
-	</header>	
+	<% include ../pages/navbar.ejs  %>
+        
 	<!-- MAIN CONTENT -->
 	<div id="content-block">
 		<div class="head-bg style-3 ab-us">
@@ -96,16 +45,17 @@
 				<h1>How this works.</h1>
 				<p>The magic of data describing your behaviour</p>
 			     
-				<a href="/" class="btn color-3 size-1 hover-6" target="_blank"><i class="fa fa-lock"></i>Use it!</a>
 			</div>	
+            
 		</div>
-		<div class="container">
+		<div class="container" style="margin-top: 200px;">
 			<div class="about-description">
 				<img class="img-responsive" src="img/spotify.jpeg" alt="">
 				<div class="row">
 					<div class="col-xs-12 col-md-10 col-md-offset-1">
                         <br>
-                        <h1 style="text-align:center;">This thing does NOT keep your data, you are safe with us.</h1>
+                        <h1 style="text-align:center;">You are safe.</h1>
+                        <div class="about-text" >This thing does NOT keep your data, you are safe with us.</div>
                         <div class="about-text" >We don't even have a database!</div>
                         <hr>
 						<div class="about-text" style="font-size:150%;">For this beautiful web app we used the Spotify API. We request you to allow us have access to your data so we can make wonderful things with it.</div>

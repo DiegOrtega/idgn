@@ -103,7 +103,9 @@ app.get('/login', function(req, res) {
 });
 
 app.get('/', function(req, res){
-        res.render('pages/autorizacion');        
+        res.render('pages/autorizacion', {
+            ref: false
+        });        
 });
 
 app.get('/callback', function(req, res) {
@@ -343,8 +345,10 @@ app.get('/index.ejs', function(request, response) {
   response.render('pages/index');
 });
 
-app.get('/about-us.ejs', function(request, response) {
-  response.render('pages/about-us');
+app.get('/about-us.ejs', function(request, response) {     
+  response.render('pages/about-us', {
+      ref: true
+  });
 });
 
 app.get('/activity.ejs', function(request, response) {
@@ -447,7 +451,8 @@ app.get('/perfil', function(request, response) {
     duracion: duracion,
     duracion2: duracion2,
     followers: followers,
-    anti_playlist: anti_playlist    
+    anti_playlist: anti_playlist,
+    ref: false 
   });
     
 });
