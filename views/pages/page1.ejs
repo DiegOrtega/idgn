@@ -35,13 +35,15 @@
 			</p>
 		</div>
     </div>
+        
 	<!-- THE HEADER -->
    <% include ../pages/navbar.ejs %>
 
-    <div class="container">  
+    <div class="container" style="margin-top:100px;">  
         <div class="row">
+            
             <div class="col-md-3 left-field">
-            <div class="be-user-block" style="margin-top:100px;">
+            <div class="be-user-block" >
         
 						<div class="be-user-detail">
 							<a class="thumbnail" href="blog-detail-2.ejs">
@@ -69,14 +71,35 @@
 							Fusce dolor libero, efficitur et lobortis at, faucibus nec nunc. Proin fermentum turpis eget nisi facilisis lobortis. Praesent malesuada facilisis maximus. Donec sed lobortis tortor. Ut nec lacinia sapien, sit amet dapibus magna.
 						</p> -->
 					</div> 
-                </div>
+            </div>
+        
             
+            <div class="col-lg-9 centro">
+                <h2>Seed Track</h2>
+            </div>
+            
+            <div class=" col-lg-5 col-lg-offset-2 centro">
+                <div class="be-post centro"  >
+                    <a href="<%=urlS%>" target="_blank" class="be-img-block"  >
+                    <img src="<%=imagenS%>" alt="omg" >
+                    </a>
+                    <a href="blog-detail-2.ejs" class="be-post-title"><%= nombreAS %></a>
+                    <span>
+                        Popularity: <%= popS %> %
+                    </span>
+                    <div class="author-post">
+                        <span>by <a href="blog-detail-2.ejs"><%= nombreS %></a></span>
+                    </div>
+                </div>
+              </div>
+            
+          
                 <!-- MAIN CONTENT -->
 	               <div id="content-block">
 		<div class="container custom-container be-detail-container">
 			<div class="row">
                 
-				<div class="col-md-9">
+				<div class="col-md-12">
 					
                      <h2 style="text-align: center;">Your music related data</h2>
                     

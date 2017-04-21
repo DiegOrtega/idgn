@@ -67,7 +67,7 @@ $(function() {
 		//});
 		setTimeout(function() {
 			$('.tab-wrapper.style-2 .tab-info').addClass('none');
-		}, 100)
+		}, 1)
 
 	});
 

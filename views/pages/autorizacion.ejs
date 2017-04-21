@@ -6,6 +6,29 @@
    
     <style type="text/css">
         
+        h2, #login, .centro {
+                margin: 0 auto; 
+                width: 50%;
+            }
+
+         .contenedor{
+                    background-color: #e8e9eb;
+                    border-radius: 20px;
+                }
+        .text-overflow {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: 500px;
+              } 
+
+
+               h1, p, h4, h3 {
+                    text-align: center;
+                    color:#313638;
+                }
+
+        
     body {
         background-image: url("/img/background.jpeg");
         background-size: cover;
@@ -14,32 +37,7 @@
       #login, #loggedin {
         display: none;
       }
-      .text-overflow {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        width: 500px;
-      } 
-        h2, #login, .centro {
-            margin: 0 auto; 
-            width: 50%;
-        }
-        .contenedor{
-            background-color: #e8e9eb;
-            border-radius: 20px;
-        }
-        
-        .contenedor:hover {
-           opacity: 1; 
-        }
-       h1, p, h4, h3 {
-            text-align: center;
-            color:#313638;
-        }
-        a {
-            
-        }
-     
+      
         .popup {
 	-moz-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
@@ -64,18 +62,18 @@
             
 }
 .popup:hover {
-		-moz-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
-	box-shadow:inset 0px 1px 0px 0px #7a8eb9;
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #6ae368), color-stop(1, #2d4370));
-	background:-moz-linear-gradient(top, #6ae368 5%, #2d4370 100%);
-	background:-webkit-linear-gradient(top, #6ae368 5%, #2d4370 100%);
-	background:-o-linear-gradient(top, #6ae368 5%, #2d4370 100%);
-	background:-ms-linear-gradient(top, #6ae368 5%, #2d4370 100%);
-	background:linear-gradient(to bottom, #6ae368 5%, #2d4370 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6ae368', endColorstr='#2d4370',GradientType=0);
-	background-color:#6ae368;
-	border:1px solid #314179;
+	-moz-box-shadow:inset 0px 1px 0px 0px #3dc21b;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #3dc21b;
+	box-shadow:inset 0px 1px 0px 0px #3dc21b;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #44c767), color-stop(1, #5cbf2a));
+	background:-moz-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+	background:-webkit-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+	background:-o-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+	background:-ms-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+	background:linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#44c767', endColorstr='#5cbf2a',GradientType=0);
+	background-color:#44c767;
+	border:1px solid #18ab29;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
@@ -89,8 +87,6 @@
 	position:relative;
 	top:1px;
 }
-
-        
         
     </style>
   </head>
@@ -98,10 +94,14 @@
  
     
   <body>
+      
+  
+	<!-- THE LOADER -->
+
     
       <% include ../pages/navbar.ejs %>
       
-    <div class="container-fluid"> 
+    <div class="container-fluid" > 
       <div id="login" class="contenedor" style="margin-top:200px; font-family: 'Josefin Slab', serif;">
           <br>
         <h1>IDGN</h1>
@@ -113,12 +113,12 @@
             They give you what you want. 
           <br>    
           </h4> -->
-          <h2 style="text-align: center; color:#313638;">INteractive Deep Immersion into GENeric Audio </h2>
+          <h2 style="text-align: center; color:#313638;">INteractive Deep Immersion into non-GENeric Audio </h2>
           <hr>
           <h4>
             
           </h4>
-            <h3>An opportunity to break our bubble
+            <h3>An opportunity to break our Echo Chamber
           </h3>
           <br>
           <div class="centro" style="text-align: center;">

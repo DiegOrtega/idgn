@@ -1,12 +1,3 @@
-/**
- * This is an example of a basic node.js script that performs
- * the Authorization Code oAuth2 flow to authenticate against
- * the Spotify Accounts.
- *
- * For more information, read
- * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
- */
-
 var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
 var querystring = require('querystring');
@@ -14,7 +5,9 @@ var cookieParser = require('cookie-parser');
 var fs = require("fs");
 var SpotifyWebApi = require('spotify-web-api-node');
 
-var nombre, nombre, email, external_urls, seguidores, imagen_url, pais, access_token = null, track_uri, track_uri_ref, num=20, bailongo = 0, energia = 0, fundamental=0, amplitud=0, modo=0, dialogo=0, acustica=0, instrumental=0, audiencia=0, positivismo=0, tempo=0, firma_tiempo=0, duracion=0, bailongo2 = 0, energia2 = 0, fundamental2=0, amplitud2=0, modo2=0, dialogo2=0, acustica2=0, instrumental2=0, audiencia2=0, positivismo2=0, tempo2=0, firma_tiempo2=0, duracion2=0, followers, anti_playlist = [];
+var nombre, nombre, email, external_urls, seguidores, imagen_url, pais, access_token = null, track_uri, track_uri_ref, num=20, bailongo = 0, energia = 0, fundamental=0, amplitud=0, modo=0, dialogo=0, acustica=0, instrumental=0, audiencia=0, positivismo=0, tempo=0, firma_tiempo=0, duracion=0, bailongo2 = 0, energia2 = 0, fundamental2=0, amplitud2=0, modo2=0, dialogo2=0, acustica2=0, instrumental2=0, audiencia2=0, positivismo2=0, tempo2=0, firma_tiempo2=0, duracion2=0, followers, anti_playlist = [], bailongoS, energiaS, fundamentalS, amplitudS, modoS, dialogoS, acusticaS, positivismoS, instrumentalS, audienciaS, tempoS, firma_tiempoS, duracionS, urlS, imagenS, nombreAS,  popS, nombreS;
+
+//Protocolo de seguridad
 
 var fileName = "./secret-config.json";
 var config;
@@ -29,11 +22,16 @@ catch (err) {
 };
 
 console.log("session secret is:", config.sessionSecret);
+//Finaliza protocolo de seguridad
 
+
+//Setup de Express
 var app = express();
 
+//Setup de puerto 
 app.set('port', (process.env.PORT || 5000));
 
+//Setup para funcionar en local y en la web
 if( app.get('port') == 5000 ){
    
     var client_id = '381fa9402ef049efab1c1a801beef662'; // Your client id
@@ -61,7 +59,13 @@ if( app.get('port') == 5000 ){
 
 console.log("redirect_uri: " + redirect_uri);
 
+//Finaliza setup
+
+
 /**
+    Este proceso funciona para crear una llave de acceso a la API
+    La llave enviada a la API será comparada con la que se reciba después del proceso y estas deberán coincidir para no generar un error.
+
  * Generates a random string containing numbers and letters
  * @param  {number} length The length of the string
  * @return {string} The generated string
@@ -77,10 +81,23 @@ var generateRandomString = function(length) {
 };
 
 var stateKey = 'spotify_auth_state';
+// Finaliza creacion de llaves
 
+//Pieza de middleware que dirije los links a la carpeta donde se alojan los recursos
 app.use(express.static(__dirname + '/public'))
    .use(cookieParser());
 
+
+
+//Página de inicio hacia la autorizacion
+app.get('/', function(req, res){
+        res.render('pages/autorizacion', {
+            ref: false
+        });        
+});
+
+
+//Login procesa el REQUEST de la API de Spotify para autorizacion
 app.get('/login', function(req, res) {
 
   var state = generateRandomString(16);
@@ -101,12 +118,13 @@ app.get('/login', function(req, res) {
     console.log("se termina la autorización desde cliente!");
     
 });
+//Finaliza proceso
 
-app.get('/', function(req, res){
-        res.render('pages/autorizacion', {
-            ref: false
-        });        
-});
+
+/*
+        Callback de Spotify Api despueés de autorización
+*/
+
 
 app.get('/callback', function(req, res) {
     
@@ -124,7 +142,8 @@ app.get('/callback', function(req, res) {
       querystring.stringify({
         error: 'state_mismatch'
       }));
-  } else {
+  } 
+    else {
       
     res.clearCookie(stateKey);
       
@@ -190,11 +209,15 @@ app.get('/callback', function(req, res) {
                 track_uri = track_uri.substring(14);
                 console.log(track_uri);
                 
+                
+                   
+                
                  spotifyApi.getAudioFeaturesForTrack(track_uri)
                   .then(function(data) {
-                    i = i + 1;
-                    console.log('i: ' + i);
                      
+                     i = i + 1;
+                    console.log('i: ' + i);
+                    
                      bailongo = bailongo + parseFloat(data.body.danceability);
                      energia = energia + parseFloat(data.body.energy);
                      fundamental = fundamental + parseFloat(data.body.key); 
@@ -210,9 +233,65 @@ app.get('/callback', function(req, res) {
                      duracion = duracion + parseFloat(data.body.duration_ms);
                      
                      if(i == 1){
+                         
                          track_uri_ref = track_uri;
-                     }
+                         
+                         console.log('data of track ' + i);
+                        console.log( data);
+                         
+                         
+                         console.log("TRACK SEMILLA: " + track_uri_ref);
+                         
+                            bailongoS = bailongo;
+                            energiaS = energia; 
+                            fundamentalS = fundamental;
+                            amplitudS = amplitud; 
+                            modoS =modo;
+                            dialogoS= dialogo;
+                            acusticaS = acustica; 
+                            positivismoS = positivismo;
+                            instrumentalS = instrumental;
+                            audienciaS = audiencia;
+                            tempoS = tempo; 
+                            firma_tiempoS = firma_tiempo; 
+                            duracionS = duracion;
+                            
+                          //Request por información de la semilla
+                         
+                       var options4 = {
+                          url: 'https://api.spotify.com/v1/tracks/' + track_uri_ref, 
+                          headers: { 'Authorization': 'Bearer ' + access_token },
+                          json: true
+                        };  
+                        
+                        console.log(options4);
                      
+                     
+                        // use the access token to access the Spotify Web API
+                         
+                        request.get(options4, function(error, response, body) {
+                        if(error){console.log(error)}
+                            
+                            console.log('response de info del seed');
+                            console.log(response.statusCode);
+                            
+                            urlS =  body.preview_url;
+                            imagenS = body.album.images[0].url;
+                            nombreAS = body.name;
+                            popS = body.popularity;
+                            console.log('popS ' );
+                            console.log( popS);
+                            nombreS = body.artists[0].name; 
+                        
+                        });
+                         
+                         //Fin de Request
+                        
+                         
+                        }
+                     
+                    
+                        
                     if(i == num){
                         bailongo = (bailongo/num)*100;
                         energia = (energia/num)*100; 
@@ -228,6 +307,7 @@ app.get('/callback', function(req, res) {
                         firma_tiempo = firma_tiempo/num;
                         duracion = duracion/num;
                         
+                    
                         console.log('bailongo: ' + bailongo);
                         console.log('energia: ' + energia);
                         console.log('fundamental: ' + fundamental);
@@ -254,6 +334,8 @@ app.get('/callback', function(req, res) {
                         modo2 = Math.round(modo);
                         firma_tiempo2 = Math.round(firma_tiempo);
                         
+                     
+                    
                         var options3 = {
                           url: 'https://api.spotify.com/v1/recommendations?'+'seed_tracks=' + 
                           track_uri_ref + '&target_acousticness='+ acustica2 + '&target_danceability=' + 
@@ -266,11 +348,13 @@ app.get('/callback', function(req, res) {
                         };  
                         
                         console.log(options3);
-
+                     
+                     
                         // use the access token to access the Spotify Web API
                         request.get(options3, function(error, response, body) {
-                            if(error){console.log(error)}
-                            console.log("Datos:");
+                        if(error){console.log(error)}
+                        
+                         console.log("Datos:");
                             console.log(body.tracks[0].name);
                             console.log(body.tracks[0].artists);
                             console.log(body.tracks[0].album.images[0].url);
@@ -284,12 +368,17 @@ app.get('/callback', function(req, res) {
                                 access_token: access_token,
                                 refresh_token: refresh_token
                               }));
-                        }); 
+
+                            
+                        });
                         
-                    }; 
+                    };
+                 
                      
+                        
                   }, function(err) {
                     done(err);
+                     console.log("err: " + err );
                   });
                 console.log('');    
             }); 
@@ -305,6 +394,10 @@ app.get('/callback', function(req, res) {
   }
 
 });
+
+//Finaliza proceso
+
+//Proceso para refrescar un token
 
 app.get('/refresh_token', function(req, res) {
 
@@ -330,17 +423,13 @@ app.get('/refresh_token', function(req, res) {
   });
 });
 
-//console.log('Listening on 8888');
-//app.listen(5000);
+//Finaliza proceso
 
-
-app.use(express.static(__dirname + '/public'));
-
-// views is directory for all template files
+// views is directory for all template files/Directorio de Templates
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-
+//Otros PROCESOS 
 app.get('/index.ejs', function(request, response) {
   response.render('pages/index');
 });
@@ -452,7 +541,27 @@ app.get('/perfil', function(request, response) {
     duracion2: duracion2,
     followers: followers,
     anti_playlist: anti_playlist,
-    ref: false 
+    ref: false,
+    track_uri_ref: track_uri_ref,
+    bailongoS: bailongoS,
+    energiaS: energiaS, 
+    fundamentalS: fundamentalS,
+    amplitudS: amplitudS, 
+    modoS: modoS,
+    dialogoS: dialogoS,
+    acusticaS: acusticaS, 
+    positivismoS: positivismoS,
+    instrumentalS: instrumentalS,
+    audienciaS: audienciaS,
+    tempoS: tempoS, 
+    firma_tiempoS: firma_tiempoS,
+    duracionS: duracionS,
+    urlS: urlS, 
+    imagenS: imagenS, 
+    nombreAS: nombreAS,  
+    popS: popS, 
+    nombreS: nombreS    
+        
   });
     
 });
