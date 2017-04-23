@@ -438,7 +438,9 @@ app.get('/index.ejs', function(request, response) {
 
 app.get('/about-us.ejs', function(request, response) {     
   response.render('pages/about-us', {
-      ref: true
+      ref: true,
+      imagen_url: imagen_url,
+      nombre: nombre
   });
 });
 
