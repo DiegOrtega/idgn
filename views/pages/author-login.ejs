@@ -95,6 +95,7 @@
 					</div>
 					<!-- <a class="btn full color-1 size-1 hover-1"><i class="fa fa-plus"></i>add sections</a>	 -->									
 				</div>
+            
 				<div class="col-xs-12 col-md-8">
                     <div class="tab-wrapper style-1">
                         <div class="tab-nav-wrapper">
@@ -148,36 +149,32 @@
                                 <br/>
                               </div>        
                         </div>
+                            
+                                
+                            <div class="row">
+
+                                        <% anti_playlist.tracks.forEach(function(records){ %>
+
+                                    <div class="col-ml-12 col-xs-6 col-sm-4" style="height:448px !important;">
+                                    <div class="be-post">
+                                        <a href="<%=records.preview_url%>" target="_blank" class="be-img-block">
+                                        <img src="<%=records.album.images[0].url%>" alt="omg">
+                                        </a>
+                                        <a href="blog-detail-2.ejs" class="be-post-title"><%= records.name %></a>
+                                        <span>
+                                            Popularity: <%=records.popularity%> %
+                                        </span>
+                                        <div class="author-post">
+                                            <span>by <a href="blog-detail-2.ejs"><%=records.artists[0].name%></a></span>
+                                        </div>
+                                        <div class="info-block">
+                                        </div>
+                                    </div>
+                                  </div>
+                                 <%  })%>
+                                </div>
                             </div> 
-                        </div>
-                           
-                                
-                           
-                        </div>
-                                
-								<div class="row">
-                        
-                            <% anti_playlist.tracks.forEach(function(records){ %>
-                               
-                            <div class="col-ml-12 col-xs-6 col-sm-4" style="height:448px !important;">
-							<div class="be-post">
-								<a href="<%=records.preview_url%>" target="_blank" class="be-img-block">
-								<img src="<%=records.album.images[0].url%>" alt="omg">
-								</a>
-								<a href="blog-detail-2.ejs" class="be-post-title"><%= records.name %></a>
-								<span>
-									Popularity: <%=records.popularity%> %
- 								</span>
-								<div class="author-post">
-									<span>by <a href="blog-detail-2.ejs"><%=records.artists[0].name%></a></span>
-								</div>
-								<div class="info-block">
-								</div>
-							</div>
-						  </div>
-                         <%  })%>
-					</div>
-                            </div>
+                            
                             <div class="tab-info">
 								<div class="row">
 										<div class="col-md-12">
@@ -395,237 +392,11 @@
             																				
 								</div>                                                                 
                             </div>
-                            <div class="tab-info">
-                            	<div class="collection">
-                            		<h3 class="menu-article">Creative Ideas</h3>
-                            		<div class="collection-header">
-                            			<span><i class="fa fa-user"></i>by <a href="page1.ejs">Leigh Taylor</a> </span>
-                            			<span><i class="fa fa-thumbs-o-up"></i> 360</span>
-                            			<span><i class="fa fa-eye"></i> 789</span>
-                            			<div class="edit-collection">
-                            				<i class="fa fa-pencil"></i>
-                            				<div class="c_edit">
-                            					<div class="btn-rename">
-                            						rename
-													<div class="message-popup">
-														<div class="message-popup-inner container">
-															<div class="row">
-																<div class="col-xs-12 col-sm-8 col-sm-offset-2">
-																	<i class="fa fa-times close-button"></i>
-																	<h5 class="large-popup-title">Rename</h5>
-																	<div class="form-group">
-																		<input class="form-input" required="" placeholder="Your text">
-																	</div>
-																	<button class="btn btn-right color-1 size-1 hover-1">OK</button>	
-																</div>
-															</div>
-														</div>
-													</div>                            						
-                            					</div>
-                            					<a href="page1.ejs">delete</a>
-                            					
-                            				</div>
-                            			</div>
-                            		</div>
-                            		<div class="collection-entry">
-	                            		<a href="page1.ejs" class="portfolio-link type-2 clearfix">
-	                            			<img src="img/collection_1.jpg" alt="">
-	                            			<img src="img/collection_2.jpg" alt="">
-	                            			<img src="img/collection_3.jpg" alt="">
-	                            			<img src="img/collection_4.jpg" alt="">
-	                            			<img src="img/collection_5.jpg" alt="">
-	                            			<div class="color_bg">
-												<span>view gallery</span>
-												<span class="child"></span>
-											</div>
-	                            		</a>
-                            		</div>
-                            	</div>
-                            	<div class="collection">
-                            		<h3 class="menu-article">Creative Agency</h3>
-                            		<div class="collection-header">
-                            			<span><i class="fa fa-user"></i>by <a href="page1.ejs">Leigh Taylor</a> </span>
-                            			<span><i class="fa fa-thumbs-o-up"></i> 360</span>
-                            			<span><i class="fa fa-eye"></i> 789</span>
-                            			<div class="edit-collection">
-                            				<i class="fa fa-pencil"></i>
-                            				<div class="c_edit">
-                            					<div class="btn-rename">
-                            						rename
-													<div class="message-popup">
-														<div class="message-popup-inner container">
-															<div class="row">
-																<div class="col-xs-12 col-sm-8 col-sm-offset-2">
-																	<i class="fa fa-times close-button"></i>
-																	<h5 class="large-popup-title">Rename</h5>
-																	<div class="form-group">
-																		<input class="form-input" required="" placeholder="Your text">
-																	</div>
-																	<button class="btn btn-right color-1 size-1 hover-1">OK</button>	
-																</div>
-															</div>
-														</div>
-													</div>                            						
-                            					</div>
-                            					<a href="page1.ejs">delete</a>
-                            					
-                            				</div>
-                            			</div>
-                            		</div>
-                            		<div class="collection-entry">
-	                            		<a href="page1.ejs" class="portfolio-link type-2 clearfix">
-	                            			<img src="img/collection_6.jpg" alt="">
-	                            			<img src="img/collection_7.jpg" alt="">
-	                            			<img src="img/collection_8.jpg" alt="">
-	                            			<img src="img/collection_9.jpg" alt="">
-	                            			<img src="img/collection_10.jpg" alt="">
-	                            			<div class="color_bg">
-												<span>view gallery</span>
-												<span class="child"></span>
-											</div>
-	                            		</a>
-                            		</div>
-                            	</div>
-                            	<div class="collection">
-                            		<h3 class="menu-article">Creative Agency</h3>
-                            		<div class="collection-header">
-                            			<span><i class="fa fa-user"></i>by <a href="page1.ejs">Inspiration Art</a> </span>
-                            			<span><i class="fa fa-thumbs-o-up"></i> 360</span>
-                            			<span><i class="fa fa-eye"></i> 789</span>
-                            			<div class="edit-collection">
-                            				<i class="fa fa-pencil"></i>
-                            				<div class="c_edit">
-                            					<div class="btn-rename">
-                            						rename
-													<div class="message-popup">
-														<div class="message-popup-inner container">
-															<div class="row">
-																<div class="col-xs-12 col-sm-8 col-sm-offset-2">
-																	<i class="fa fa-times close-button"></i>
-																	<h5 class="large-popup-title">Rename</h5>
-																	<div class="form-group">
-																		<input class="form-input" required="" placeholder="Your text">
-																	</div>
-																	<button class="btn btn-right color-1 size-1 hover-1">OK</button>	
-																</div>
-															</div>
-														</div>
-													</div>                            						
-                            					</div>
-                            					<a href="page1.ejs">delete</a>
-                            					
-                            				</div>
-                            			</div>
-                            		</div>
-                            		<div class="collection-entry">
-	                            		<a href="page1.ejs" class="portfolio-link type-2 clearfix">
-	                            			<img src="img/collection_11.jpg" alt="">
-	                            			<img src="img/collection_12.jpg" alt="">
-	                            			<img src="img/collection_13.jpg" alt="">
-	                            			<img src="img/collection_14.jpg" alt="">
-	                            			<img src="img/collection_15.jpg" alt="">
-	                            			<div class="color_bg">
-												<span>view gallery</span>
-												<span class="child"></span>
-											</div>
-	                            		</a>
-                            		</div>
-                            	</div>
-                            	<div class="collection">
-                            		<h3 class="menu-article">Ideas For Personal Site</h3>
-                            		<div class="collection-header">
-                            			<span><i class="fa fa-user"></i>by <a href="page1.ejs">Inspiration Art</a> </span>
-                            			<span><i class="fa fa-thumbs-o-up"></i> 360</span>
-                            			<span><i class="fa fa-eye"></i> 789</span>
-                            			<div class="edit-collection">
-                            				<i class="fa fa-pencil"></i>
-                            				<div class="c_edit">
-                            					<div class="btn-rename">
-                            						rename
-													<div class="message-popup">
-														<div class="message-popup-inner container">
-															<div class="row">
-																<div class="col-xs-12 col-sm-8 col-sm-offset-2">
-																	<i class="fa fa-times close-button"></i>
-																	<h5 class="large-popup-title">Rename</h5>
-																	<div class="form-group">
-																		<input class="form-input" required="" placeholder="Your text">
-																	</div>
-																	<button class="btn btn-right color-1 size-1 hover-1">OK</button>	
-																</div>
-															</div>
-														</div>
-													</div>                            						
-                            					</div>
-                            					<a href="page1.ejs">delete</a>
-                            					
-                            				</div>
-                            			</div>
-                            		</div>
-                            		<div class="collection-entry">
-	                            		<a href="page1.ejs" class="portfolio-link type-2 clearfix">
-	                            			<img src="img/collection_16.jpg" alt="">
-	                            			<img src="img/collection_17.jpg" alt="">
-	                            			<img src="img/collection_18.jpg" alt="">
-	                            			<img src="img/collection_19.jpg" alt="">
-	                            			<img src="img/collection_20.jpg" alt="">
-	                            			<div class="color_bg">
-												<span>view gallery</span>
-												<span class="child"></span>
-											</div>
-	                            		</a>
-                            		</div>
-                            	</div> 
-                            	<div class="collection">
-                            		<h3 class="menu-article">Inspiration Photos</h3>
-                            		<div class="collection-header">
-                            			<span><i class="fa fa-user"></i>by <a href="page1.ejs">Inspiration Art</a> </span>
-                            			<span><i class="fa fa-thumbs-o-up"></i> 360</span>
-                            			<span><i class="fa fa-eye"></i> 789</span>
-                            			<div class="edit-collection">
-                            				<i class="fa fa-pencil"></i>
-                            				<div class="c_edit">
-                            					<div class="btn-rename">
-                            						rename
-													<div class="message-popup">
-														<div class="message-popup-inner container">
-															<div class="row">
-																<div class="col-xs-12 col-sm-8 col-sm-offset-2">
-																	<i class="fa fa-times close-button"></i>
-																	<h5 class="large-popup-title">Rename</h5>
-																	<div class="form-group">
-																		<input class="form-input" required="" placeholder="Your text">
-																	</div>
-																	<button class="btn btn-right color-1 size-1 hover-1">OK</button>	
-																</div>
-															</div>
-														</div>
-													</div>                            						
-                            					</div>
-                            					<a href="page1.ejs">delete</a>
-                            					
-                            				</div>
-                            			</div>
-                            		</div>
-                            		<div class="collection-entry">
-	                            		<a href="page1.ejs" class="portfolio-link type-2 clearfix">
-	                            			<img src="img/collection_6.jpg" alt="">
-	                            			<img src="img/collection_10.jpg" alt="">
-	                            			<img src="img/collection_8.jpg" alt="">
-	                            			<img src="img/collection_11.jpg" alt="">
-	                            			<img src="img/collection_3.jpg" alt="">
-	                            			<div class="color_bg">
-												<span>view gallery</span>
-												<span class="child"></span>
-											</div>
-	                            		</a>
-                            		</div>
-                            	</div>                        	                            	
-                            </div>                          
                         </div>
                     </div> 				
 				</div>				
 			</div>
+            
 		</div>
 	</div>
 
