@@ -30,9 +30,10 @@
 				</div> -->
 				<div class="login-header-block" style="margin-right:10px;">
 					<div class="login_block">
-                        
+                        <% if(nombre != ""){ %>
                         <img class="login-user" src="<%=imagen_url%>" alt="" style="border-radius:5px; height:50px;">
 							<span class="be-dropdown-content" style="margin-right:20px;">Hi, <span><%= nombre %></span></span>
+                        <% } %>
                         
                         <% if(ref){ %> 
                             <a class="btn color-1 size-2 hover-2" href="/"><i class="fa fa-home fa-lg"></i>
