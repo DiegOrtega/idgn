@@ -564,14 +564,15 @@ app.get('/perfil', function(request, response) {
     imagenS: imagenS, 
     nombreAS: nombreAS,  
     popS: popS, 
-    nombreS: nombreS    
+    nombreS: nombreS,
+    track_uri: track_uri    
         
   });
     
 });
 
 
-app.get('/page2.ejs', function(request, response) {
+app.get('/track', function(request, response) {
   response.render('pages/page2');
 });
 
