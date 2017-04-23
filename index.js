@@ -506,7 +506,7 @@ app.get('/messages.ejs', function(request, response) {
 
 app.get('/perfil', function(request, response) {
 
-    response.render('pages/page1', {
+    response.render('pages/author-login.ejs', {
     pais: pais,
     nombre: nombre,
     email: email,
