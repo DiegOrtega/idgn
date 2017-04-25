@@ -4,8 +4,12 @@ var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 var fs = require("fs");
 var SpotifyWebApi = require('spotify-web-api-node');
+var bodyParser = require('body-parser');
+var logger = require('morgan');
+var path = require('path');
 
-var nombre = "", email, external_urls, seguidores, imagen_url, pais, access_token = null, track_uri, track_uri_ref, num=20, bailongo = 0, energia = 0, fundamental=0, amplitud=0, modo=0, dialogo=0, acustica=0, instrumental=0, audiencia=0, positivismo=0, tempo=0, firma_tiempo=0, duracion=0, bailongo2 = 0, energia2 = 0, fundamental2=0, amplitud2=0, modo2=0, dialogo2=0, acustica2=0, instrumental2=0, audiencia2=0, positivismo2=0, tempo2=0, firma_tiempo2=0, duracion2=0, followers, anti_playlist = [], bailongoS, energiaS, fundamentalS, amplitudS, modoS, dialogoS, acusticaS, positivismoS, instrumentalS, audienciaS, tempoS, firma_tiempoS, duracionS, urlS, imagenS, nombreAS,  popS, nombreS;
+var nombre = "", email, external_urls, seguidores, imagen_url, pais, access_token = null, track_uri, track_uri_ref, num=20, bailongo = 0, energia = 0, fundamental=0, amplitud=0, modo=0, dialogo=0, acustica=0, instrumental=0, audiencia=0, positivismo=0, tempo=0, firma_tiempo=0, duracion=0, bailongo2 = 0, energia2 = 0, fundamental2=0, amplitud2=0, modo2=0, dialogo2=0, acustica2=0, instrumental2=0, audiencia2=0, positivismo2=0, tempo2=0, firma_tiempo2=0, duracion2=0, followers, anti_playlist = [], bailongoS, energiaS, fundamentalS, amplitudS, modoS, dialogoS, acusticaS, positivismoS, instrumentalS, audienciaS, tempoS, firma_tiempoS, duracionS, urlS, imagenS, nombreAS,  popS, nombreS ,trackid ,artist_data = [];
+
 
 //Protocolo de seguridad
 
@@ -27,6 +31,12 @@ console.log("session secret is:", config.sessionSecret);
 
 //Setup de Express
 var app = express();
+
+
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended:false}));
+app.use(express.static(path.join(__dirname, 'public')));
 
 //Setup de puerto 
 app.set('port', (process.env.PORT || 5000));
@@ -127,7 +137,6 @@ app.get('/login', function(req, res) {
         Callback de Spotify Api despueés de autorización
 */
 
-
 app.get('/callback', function(req, res) {
     
   // your application requests refresh and access tokens
@@ -162,11 +171,11 @@ app.get('/callback', function(req, res) {
       json: true
     };
 
-    request.post(authOptions, function(error, response, body) {
+    request.post(authOptions, function(error, response, bodyS) {
       if (!error && response.statusCode === 200) {
 
-            access_token = body.access_token,
-            refresh_token = body.refresh_token;
+            access_token = bodyS.access_token,
+            refresh_token = bodyS.refresh_token;
           
           spotifyApi.setAccessToken(access_token);
 
@@ -177,18 +186,18 @@ app.get('/callback', function(req, res) {
         };
 
         // use the access token to access the Spotify Web API
-        request.get(options, function(error, response, body) {
+        request.get(options, function(error, response, bodyS) {
             
             console.log("Datos:");
-            console.log(body);
-            pais = body.country;
-            nombre = body.display_name;
-            console.log(body.display_name);
-            email = body.email;
-            external_urls = body.external_urls;
-            seguidores =  body.followers;
-            imagen_url =  body.images[0].url;
-            followers = body.followers.total;
+            console.log(bodyS);
+            pais = bodyS.country;
+            nombre = bodyS.display_name;
+            console.log(bodyS.display_name);
+            email = bodyS.email;
+            external_urls = bodyS.external_urls;
+            seguidores =  bodyS.followers;
+            imagen_url =  bodyS.images[0].url;
+            followers = bodyS.followers.total;
              
          
         });
@@ -271,19 +280,19 @@ app.get('/callback', function(req, res) {
                      
                         // use the access token to access the Spotify Web API
                          
-                        request.get(options4, function(error, response, body) {
+                        request.get(options4, function(error, response, bodyS) {
                         if(error){console.log(error)}
                             
                             console.log('response de info del seed');
                             console.log(response.statusCode);
                             
-                            urlS =  body.preview_url;
-                            imagenS = body.album.images[0].url;
-                            nombreAS = body.name;
-                            popS = body.popularity;
+                            urlS =  bodyS.preview_url;
+                            imagenS = bodyS.album.images[0].url;
+                            nombreAS = bodyS.name;
+                            popS = bodyS.popularity;
                             console.log('popS ' );
                             console.log( popS);
-                            nombreS = body.artists[0].name; 
+                            nombreS = bodyS.artists[0].name; 
                         
                         });
                          
@@ -353,16 +362,16 @@ app.get('/callback', function(req, res) {
                      
                      
                         // use the access token to access the Spotify Web API
-                        request.get(options3, function(error, response, body) {
+                        request.get(options3, function(error, response, bodyS) {
                         if(error){console.log(error)}
                         
                          console.log("Datos:");
-                            console.log(body.tracks[0].name);
-                            console.log(body.tracks[0].artists);
-                            console.log(body.tracks[0].album.images[0].url);
+                            console.log(bodyS.tracks[0].name);
+                            console.log(bodyS.tracks[0].artists);
+                            console.log(bodyS.tracks[0].album.images[0].url);
                             
                             
-                            anti_playlist = body;
+                            anti_playlist = bodyS;
                             
                             // we can also pass the token to the browser to make requests from there
                             res.redirect('/perfil#' +
@@ -415,9 +424,9 @@ app.get('/refresh_token', function(req, res) {
     json: true
   };
 
-  request.post(authOptions, function(error, response, body) {
+  request.post(authOptions, function(error, response, bodyS) {
     if (!error && response.statusCode === 200) {
-      var access_token = body.access_token;
+      var access_token = bodyS.access_token;
       res.send({
         'access_token': access_token
       });
@@ -456,8 +465,64 @@ app.get('/author-edit.ejs', function(request, response) {
   response.render('pages/author-edit');
 });
 
-app.get('/author-login.ejs', function(request, response) {
-  response.render('pages/author-login');
+app.get('/profile', function(request, response) {
+  response.render('pages/author-login', {
+      pais: pais,
+    nombre: nombre,
+    email: email,
+    external_urls: external_urls,
+    seguidores: seguidores,
+    imagen_url: imagen_url,
+    bailongo: bailongo,
+    energia: energia,
+    fundamental: fundamental,
+    amplitud: amplitud,
+    modo: modo,
+    dialogo: dialogo,
+    acustica: acustica,
+    instrumental: instrumental,
+    audiencia: audiencia,
+    positivismo: positivismo,
+    tempo: tempo,
+    firma_tiempo: firma_tiempo,
+    bailongo2: bailongo2,
+    energia2: energia2,
+    fundamental2: fundamental2,
+    amplitud2: amplitud2,
+    modo2: modo2,
+    dialogo2: dialogo2,
+    acustica2: acustica2,
+    instrumental2: instrumental2,
+    audiencia2: audiencia2,
+    positivismo2: positivismo2,
+    tempo2: tempo2,
+    firma_tiempo2: firma_tiempo2,    
+    duracion: duracion,
+    duracion2: duracion2,
+    followers: followers,
+    anti_playlist: anti_playlist,
+    ref: false,
+    track_uri_ref: track_uri_ref,
+    bailongoS: bailongoS,
+    energiaS: energiaS, 
+    fundamentalS: fundamentalS,
+    amplitudS: amplitudS, 
+    modoS: modoS,
+    dialogoS: dialogoS,
+    acusticaS: acusticaS, 
+    positivismoS: positivismoS,
+    instrumentalS: instrumentalS,
+    audienciaS: audienciaS,
+    tempoS: tempoS, 
+    firma_tiempoS: firma_tiempoS,
+    duracionS: duracionS,
+    urlS: urlS, 
+    imagenS: imagenS, 
+    nombreAS: nombreAS,  
+    popS: popS, 
+    nombreS: nombreS,
+    track_uri: track_uri    
+  });
 });
 
 app.get('/author.ejs', function(request, response) {
@@ -571,14 +636,157 @@ app.get('/perfil', function(request, response) {
     
 });
 
+app.post('/track/profile', function(req, res){
+    trackid = req.body.index;
+    
+    console.log("Index de cancion elegida " + trackid);
+    
+    
+    anti_playlist.tracks.forEach(function(records, index){
+        
+        if(index == trackid){
+            spotifyApi.getArtist(records.artists[0].id)
+              .then(function(data) {
+               
+                artist_data = data.body;
+                console.log('Artist_data', data.body);
+                
+                
+                res.render('pages/page3.ejs', {
+                    artist_data: artist_data,    
+                    trackid: trackid,
+                    pais: pais,
+                    nombre: nombre,
+                    email: email,
+                    external_urls: external_urls,
+                    seguidores: seguidores,
+                    imagen_url: imagen_url,
+                    bailongo: bailongo,
+                    energia: energia,
+                    fundamental: fundamental,
+                    amplitud: amplitud,
+                    modo: modo,
+                    dialogo: dialogo,
+                    acustica: acustica,
+                    instrumental: instrumental,
+                    audiencia: audiencia,
+                    positivismo: positivismo,
+                    tempo: tempo,
+                    firma_tiempo: firma_tiempo,
+                    bailongo2: bailongo2,
+                    energia2: energia2,
+                    fundamental2: fundamental2,
+                    amplitud2: amplitud2,
+                    modo2: modo2,
+                    dialogo2: dialogo2,
+                    acustica2: acustica2,
+                    instrumental2: instrumental2,
+                    audiencia2: audiencia2,
+                    positivismo2: positivismo2,
+                    tempo2: tempo2,
+                    firma_tiempo2: firma_tiempo2,    
+                    duracion: duracion,
+                    duracion2: duracion2,
+                    followers: followers,
+                    anti_playlist: anti_playlist,
+                    ref: false,
+                    track_uri_ref: track_uri_ref,
+                    bailongoS: bailongoS,
+                    energiaS: energiaS, 
+                    fundamentalS: fundamentalS,
+                    amplitudS: amplitudS, 
+                    modoS: modoS,
+                    dialogoS: dialogoS,
+                    acusticaS: acusticaS, 
+                    positivismoS: positivismoS,
+                    instrumentalS: instrumentalS,
+                    audienciaS: audienciaS,
+                    tempoS: tempoS, 
+                    firma_tiempoS: firma_tiempoS,
+                    duracionS: duracionS,
+                    urlS: urlS, 
+                    imagenS: imagenS, 
+                    nombreAS: nombreAS,  
+                    popS: popS, 
+                    nombreS: nombreS,
+                    track_uri: track_uri    
+      
+                    });
+                
+              }, function(err) {
+                console.error(err);
+              });
+        }
+    });
+        
+    
+        
+});
+
 
 app.get('/track', function(request, response) {
-  response.render('pages/page2');
+  response.render('pages/page3', {
+      artist_data:artist_data,
+      trackid: trackid,
+      pais: pais,
+    nombre: nombre,
+    email: email,
+    external_urls: external_urls,
+    seguidores: seguidores,
+    imagen_url: imagen_url,
+    bailongo: bailongo,
+    energia: energia,
+    fundamental: fundamental,
+    amplitud: amplitud,
+    modo: modo,
+    dialogo: dialogo,
+    acustica: acustica,
+    instrumental: instrumental,
+    audiencia: audiencia,
+    positivismo: positivismo,
+    tempo: tempo,
+    firma_tiempo: firma_tiempo,
+    bailongo2: bailongo2,
+    energia2: energia2,
+    fundamental2: fundamental2,
+    amplitud2: amplitud2,
+    modo2: modo2,
+    dialogo2: dialogo2,
+    acustica2: acustica2,
+    instrumental2: instrumental2,
+    audiencia2: audiencia2,
+    positivismo2: positivismo2,
+    tempo2: tempo2,
+    firma_tiempo2: firma_tiempo2,    
+    duracion: duracion,
+    duracion2: duracion2,
+    followers: followers,
+    anti_playlist: anti_playlist,
+    ref: false,
+    track_uri_ref: track_uri_ref,
+    bailongoS: bailongoS,
+    energiaS: energiaS, 
+    fundamentalS: fundamentalS,
+    amplitudS: amplitudS, 
+    modoS: modoS,
+    dialogoS: dialogoS,
+    acusticaS: acusticaS, 
+    positivismoS: positivismoS,
+    instrumentalS: instrumentalS,
+    audienciaS: audienciaS,
+    tempoS: tempoS, 
+    firma_tiempoS: firma_tiempoS,
+    duracionS: duracionS,
+    urlS: urlS, 
+    imagenS: imagenS, 
+    nombreAS: nombreAS,  
+    popS: popS, 
+    nombreS: nombreS,
+    track_uri: track_uri    
+      
+  });
 });
 
-app.get('/page3.ejs', function(request, response) {
-  response.render('pages/page3');
-});
 
 app.get('/people.ejs', function(request, response) {
   response.render('pages/people');

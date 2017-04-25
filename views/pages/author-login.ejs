@@ -154,16 +154,20 @@
                                 
                             <div class="row">
 
-                                        <% anti_playlist.tracks.forEach(function(records){ %>
+                                        <% anti_playlist.tracks.forEach(function(records, index){ %>
                                 
 
-                                 <!-- <iframe src="https://open.spotify.com/embed?uri=<%=records.artists[0].uri%>&theme=white&view=coverart" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-                                -->
+                                 
                                     <div class="col-ml-12 col-xs-6 col-sm-4" style="height:448px !important;">
                                     <div class="be-post">
-                                        <a href="track" target="_self" class="be-img-block">
+                                        
+                                        <form method="post" action="/track/profile" id="trackprofile" target="_blank">
+                                        <button class="be-img-block" form="trackprofile" type="submit" name="index"  value="<%=index%>"  formtarget="_blank"> 
                                         <img src="<%=records.album.images[0].url%>" alt="omg">
-                                        </a>
+                                        </button>   
+                                        </form>
+                                     
+                                        
                                         <a href="blog-detail-2.ejs" class="be-post-title"><%= records.name %></a>
                                         <span>
                                             Popularity: <%=records.popularity%> %
@@ -176,6 +180,8 @@
                                     </div>
                                   </div>
                                  <%  })%>
+                                
+                                
                                 </div>
                             </div> 
                             

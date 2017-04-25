@@ -1,17 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>NGRNetwork</title>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<link rel="shortcut icon" href="img/favicon.png">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="style/bootstrap.min.css">
-		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="style/icon.css">
-		<link rel="stylesheet" href="style/loader.css">
-		<link rel="stylesheet" href="style/idangerous.swiper.css">
-		<link rel="stylesheet" href="style/stylesheet.css">
+		<% include ../partials/header.ejs  %>
 		<!--[if lt IE 10]>
 			<link rel="stylesheet" type="text/css" href="style/ie-9.css" />
 		<![endif]-->		
@@ -26,7 +16,7 @@
 	
 <div class="be-loader">
     	<div class="spinner">
-			<img src="img/logo-loader.png"  alt="">
+			<img src="/img/logo-loader.png"  alt="">
 			<p class="circle">
 			  <span class="ouro">
 			    <span class="left"><span class="anim"></span></span>
@@ -37,69 +27,36 @@
     </div>
 	<!-- THE HEADER -->
 	<header>
-		<div class="container-fluid custom-container">
-			<div class="row no_row row-header">
-<div class="brand-be">
-	<a href="index.ejs">
-		<img class=" be_logo logo-c active"  src="img/logo.png" alt="logo" >
-		<img class="logo-c be_logo" src="img/logo-green.png" alt="logo" >
-		<img  class="logo-c be_logo" src="img/logo-orang.png" alt="logo" >
-		<img class="logo-c be_logo" src="img/logo-red.png" alt="logo">
-	</a>
-</div>
-				<div class="header-menu-block">
-					<button class="cmn-toggle-switch cmn-toggle-switch__htx"><span></span></button>
-					<ul class="header-menu" id="one">
-						<li><a href="activity.ejs">Activity</a></li>
-						<li><a href="search.ejs">Discover</a>
-							<ul>
-								<li><a href="search.ejs">Explore</a></li>
-								<li><a href="people.ejs">People</a></li>
-								<li><a href="gallery.ejs">Galleries</a></li>
-							</ul>
-						</li>
-						<li><a href="author-login.ejs">My Portfolio</a></li>
-						<li><a href="site-map.ejs">Site Map</a></li>
-						<li id="ad-work-li"><a id="add-work-btn" class="btn color-1" href="work.ejs">Add Work </a></li>
-					</ul>
-				</div>
-				<div class="login-header-block">
-					<div class="login_block">
-						<a class="btn-login btn color-1 size-2 hover-2" href="blog-detail-2.ejs"><i class="fa fa-user"></i>
-						Log in</a>
-					</div>	
-				</div>
-			</div>
-		</div>
+		<% include ../pages/navbar.ejs %>
 	</header>	
 
 
 	<!-- MAIN CONTENT -->
+        <% anti_playlist.tracks.forEach(function(records, index){ 
+                                
+                                if(trackid == index){ %>
 	<div id="content-block">
 		<div class="container custom-container be-detail-container">
 			<div class="row">
 				<div class="col-md-9 col-md-push-3">
 					<div class="be-large-post">
-						<div class="info-block">
-						<div class="be-large-post-align">
-							<span><i class="fa fa-thumbs-o-up"></i> 253</span>
-							<span><i class="fa fa-eye"></i> 753</span>
-							<span><i class="fa fa-comment-o"></i> 50</span>
-						</div>
-						</div>
+						
 						<div class="blog-content be-large-post-align">
-							<h5 class="be-post-title to">
-								Integer Blandit Velit Nec Purus Convallis	
-							</h5>
+							<h5 class="be-post-title to" style="text-align:center; font-family: 'Josefin Slab', serif;">
+                                <br>
+								<%= records.name %>	
+				            </h5>
 							<span class="be-text-tags">
-								<a href="blog-detail-2.ejs" class="be-post-tag">Interactiob design</a>, 
-								<a href="blog-detail-2.ejs" class="be-post-tag">UI/UX</a>,  
-								<a href="blog-detail-2.ejs" class="be-post-tag">Web Design</a>
+								Popularity: <%=records.popularity%> %
 							</span>
 							<div class="clear"></div>
 							<div class="be-largepost-iframe 
-							embed-responsive embed-responsive-16by9">
-								<iframe class="embed-responsive-item" src="https://player.vimeo.com/video/124626586"></iframe>
+							embed-responsive embed-responsive-16by9 centro" style="text-align: center;" >
+                                
+                                
+								 <iframe src="https://open.spotify.com/embed?uri=<%=records.uri%>&theme=white&view=coverart" width="640" height="720" frameborder="0" allowtransparency="true" class="" ></iframe>
+                                
+                              
 							</div>
 							<div class="post-text">
 								<p>Fusce dolor libero, efficitur et lobortis at, faucibus nec nunc. Proin fermentum turpis eget nisi facilisis lobortis. Praesent malesuada facilisis maximus. Donec sed lobortis tortor. Ut nec lacinia sapien, sit amet dapibus magna. Vestibulum nunc ex, tempus et volutpat nec, convallis ut massa. Sed ultricies luctus ipsum in placerat.</p>
@@ -109,16 +66,13 @@
 						</div>
 						<div class="be-large-post-align">
 							<h3 class="letf-menu-article">
-								Tags
+								Genres
 							</h3>
 							<div class="tags_block clearfix">
 								<ul>
-									<li><a href="blog-detail-2.ejs">photoshop</a></li>
-									<li><a href="blog-detail-2.ejs">national geographic</a></li>
-									<li><a href="blog-detail-2.ejs">nature</a></li>
-									<li><a href="blog-detail-2.ejs">responsive web design</a></li>
-									<li><a href="blog-detail-2.ejs">animals</a></li>
-									<li><a href="blog-detail-2.ejs">digital photography</a></li>
+                                    <% for(var i = 0; i < artist_data.genres.length; i++ ){ %>
+									<li><a><%= artist_data.genres[i] %></a></li>
+                                    <% } %>
 								</ul>
 							</div>
 						</div>						
@@ -126,8 +80,8 @@
 					<div class="row">
 						<div class="col-md-4">
 							<div class="be-post">
-								<a href="blog-detail-2.ejs" class="be-img-block">
-								<img src="img/p3.jpg" alt="omg">
+								<a href="blog-detail-2.ejs" class="be-/img-block">
+								<img src="/img/p3.jpg" alt="omg">
 								</a>
 								<a href="blog-detail-2.ejs" class="be-post-title">Colors of Ramadan</a>
 								<span>
@@ -136,7 +90,7 @@
 									<a href="blog-detail-2.ejs" class="be-post-tag">Web Design</a>
 								</span>
 								<div class="author-post">
-									<img src="img/a5.png" alt="" class="ava-author">
+									<img src="/img/a5.png" alt="" class="ava-author">
 									<span>by <a href="blog-detail-2.ejs">Hoang Nguyen</a></span>
 								</div>
 								<div class="info-block">
@@ -148,8 +102,8 @@
 						</div>
 						<div class="col-md-4">
 							<div class="be-post">
-								<a href="blog-detail-2.ejs" class="be-img-block">
-								<img src="img/p4.jpg" alt="omg">
+								<a href="blog-detail-2.ejs" class="be-/img-block">
+								<img src="/img/p4.jpg" alt="omg">
 								</a>
 								<a href="blog-detail-2.ejs" class="be-post-title">Leaving Home - L'Officiel Ukraine</a>
 								<span>
@@ -158,7 +112,7 @@
 									<a href="blog-detail-2.ejs" class="be-post-tag">Web Design</a>
 								</span>
 								<div class="author-post">
-									<img src="img/a5.png" alt="" class="ava-author">
+									<img src="/img/a5.png" alt="" class="ava-author">
 									<span>by <a href="blog-detail-2.ejs">Hoang Nguyen</a></span>
 								</div>
 								<div class="info-block">
@@ -170,8 +124,8 @@
 						</div>
 						<div class="col-md-4">
 							<div class="be-post">
-								<a href="blog-detail-2.ejs" class="be-img-block">
-								<img src="img/p5.jpg" alt="omg">
+								<a href="blog-detail-2.ejs" class="be-/img-block">
+								<img src="/img/p5.jpg" alt="omg">
 								</a>
 								<a href="blog-detail-2.ejs" class="be-post-title">Drive Your World</a>
 								<span>
@@ -180,7 +134,7 @@
 									<a href="blog-detail-2.ejs" class="be-post-tag">Web Design</a>
 								</span>
 								<div class="author-post">
-									<img src="img/a9.png" alt="" class="ava-author">
+									<img src="/img/a9.png" alt="" class="ava-author">
 									<span>by <a href="blog-detail-2.ejs">Hoang Nguyen</a></span>
 								</div>
 								<div class="info-block">
@@ -198,9 +152,9 @@
 							 to join the conversation.
 						</p>
 						<div class="be-comment">
-								<div class="be-img-comment">	
+								<div class="be-/img-comment">	
 									<a href="blog-detail-2.ejs">
-										<img src="img/c1.png" alt="" class="be-ava-comment">
+										<img src="/img/c1.png" alt="" class="be-ava-comment">
 									</a>
 								</div>
 								<div class="be-comment-content">
@@ -222,9 +176,9 @@
 								
 							</div>
 						<div class="be-comment">
-							<div class="be-img-comment">	
+							<div class="be-/img-comment">	
 									<a href="blog-detail-2.ejs">
-										<img src="img/c2.png" alt="" class="be-ava-comment">
+										<img src="/img/c2.png" alt="" class="be-ava-comment">
 									</a>
 								</div>
 								<div class="be-comment-content">
@@ -244,9 +198,9 @@
 								
 							</div>
 						<div class="be-comment">
-							<div class="be-img-comment">	
+							<div class="be-/img-comment">	
 									<a href="blog-detail-2.ejs">
-										<img src="img/c3.png" alt="" class="be-ava-comment">
+										<img src="/img/c3.png" alt="" class="be-ava-comment">
 									</a>
 								</div>
 								<div class="be-comment-content">
@@ -265,23 +219,29 @@
 					</div>
 				</div>
 				<div class="col-md-3 col-md-pull-9 left-feild">
+                    
+                  
+                    
 					<div class="be-user-block">
 						<div class="be-user-detail">
-							<a class="be-ava-user" href="blog-detail-2.ejs">
-								<img src="img/ava.png" alt="">
+							<a class="be-ava-user" href="<%=artist_data.external_urls.spotify%>" target="_blank">
+								<img src="<%= artist_data.images[0].url %>" alt="" style="border-radius:5px; height: 88px; width:70px;">
 							</a>
-							<p class="be-use-name">Daniel Ng</p>
+							<p class="be-use-name"><%=records.artists[0].name%></p>
 							<span class="be-user-info">
-								Singapore, Singapore
+								Popularity <%= artist_data.popularity %>/100
 							</span>
 						</div>
 						<div class="be-user-activity-block">
+                            <div class="row">
+                                <div class="col-lg-12" style="text-align:center;">
+                                Followers <%= artist_data.followers.total %>
+                                </div>
+                            </div>
+                            <br>
 							<div class="row">
-								<div class="col-lg-6">
+								<div class="col-lg-12">
 									<a href="blog-detail-2.ejs" class="be-user-activity-button be-follow-type"><i class="fa fa-plus"></i>FOLLOW</a>
-								</div>
-								<div class="col-lg-6">
-									<a href="blog-detail-2.ejs" class="col-lg-6 be-user-activity-button send-btn be-message-type"><i class="fa fa-envelope-o"></i>MESSAGE</a>
 								</div>
 							</div>
 						</div>
@@ -292,6 +252,9 @@
 							Fusce dolor libero, efficitur et lobortis at, faucibus nec nunc. Proin fermentum turpis eget nisi facilisis lobortis. Praesent malesuada facilisis maximus. Donec sed lobortis tortor. Ut nec lacinia sapien, sit amet dapibus magna.
 						</p>
 					</div>
+                    
+                  
+                    
 					<a href="blog-detail-2.ejs" class="be-button-vidget like-btn blue-style"><i class="fa fa-thumbs-o-up"></i>LIKE PROJECT</a>
 					<a href="blog-detail-2.ejs" class="be-button-vidget add-btn grey-style"><i class="fa fa-file-o"></i>ADD TO COLLECTION</a>
 
@@ -300,8 +263,8 @@
 						<div class="swiper-wrapper">
 							<div class="swiper-slide">
 								<div class="be-post">
-									<a href="blog-detail-2.ejs" class="be-img-block">
-										<img src="img/p9.jpg" height="202" width="269" alt="omg">
+									<a href="blog-detail-2.ejs" class="be-/img-block">
+										<img src="/img/p9.jpg" height="202" width="269" alt="omg">
 									</a>
 									<a href="blog-detail-2.ejs" class="be-post-title">NAHA Finalist Hairstylist of the Year Allen Ruiz</a>
 										<span>
@@ -310,7 +273,7 @@
 											<a href="blog-detail-2.ejs" class="be-post-tag">Interactiob design</a>
 										</span>
 									<div class="author-post">
-										<img src="img/ava.png" alt="" class="ava-author">
+										<img src="/img/ava.png" alt="" class="ava-author">
 										<span>by <a href="blog-detail-2.ejs">Daniel Ng</a></span>
 									</div>
 									<div class="info-block">
@@ -322,8 +285,8 @@
 							</div>
 							<div class="swiper-slide">
 								<div class="be-post">
-									<a href="blog-detail-2.ejs" class="be-img-block">
-										<img src="img/p9.jpg" height="202" width="269" alt="omg">
+									<a href="blog-detail-2.ejs" class="be-/img-block">
+										<img src="/img/p9.jpg" height="202" width="269" alt="omg">
 									</a>
 									<a href="blog-detail-2.ejs" class="be-post-title">NAHA Finalist Hairstylist of the Year Allen Ruiz</a>
 										<span>
@@ -332,7 +295,7 @@
 											<a href="blog-detail-2.ejs" class="be-post-tag">Interactiob design</a>
 										</span>
 									<div class="author-post">
-										<img src="img/ava.png" alt="" class="ava-author">
+										<img src="/img/ava.png" alt="" class="ava-author">
 										<span>by <a href="blog-detail-2.ejs">Daniel Ng</a></span>
 									</div>
 									<div class="info-block">
@@ -344,8 +307,8 @@
 							</div>
 							<div class="swiper-slide">
 								<div class="be-post">
-									<a href="blog-detail-2.ejs" class="be-img-block">
-										<img src="img/p9.jpg" height="202" width="269" alt="omg">
+									<a href="blog-detail-2.ejs" class="be-/img-block">
+										<img src="/img/p9.jpg" height="202" width="269" alt="omg">
 									</a>
 									<a href="blog-detail-2.ejs" class="be-post-title">NAHA Finalist Hairstylist of the Year Allen Ruiz</a>
 										<span>
@@ -354,7 +317,7 @@
 											<a href="blog-detail-2.ejs" class="be-post-tag">Interactiob design</a>
 										</span>
 									<div class="author-post">
-										<img src="img/ava.png" alt="" class="ava-author">
+										<img src="/img/ava.png" alt="" class="ava-author">
 										<span>by <a href="blog-detail-2.ejs">Daniel Ng</a></span>
 									</div>
 									<div class="info-block">
@@ -366,8 +329,8 @@
 							</div>
 							<div class="swiper-slide">
 								<div class="be-post">
-									<a href="blog-detail-2.ejs" class="be-img-block">
-										<img src="img/p9.jpg" height="202" width="269" alt="omg">
+									<a href="blog-detail-2.ejs" class="be-/img-block">
+										<img src="/img/p9.jpg" height="202" width="269" alt="omg">
 									</a>
 									<a href="blog-detail-2.ejs" class="be-post-title">NAHA Finalist Hairstylist of the Year Allen Ruiz</a>
 										<span>
@@ -376,7 +339,7 @@
 											<a href="blog-detail-2.ejs" class="be-post-tag">Interactiob design</a>
 										</span>
 									<div class="author-post">
-										<img src="img/ava.png" alt="" class="ava-author">
+										<img src="/img/ava.png" alt="" class="ava-author">
 										<span>by <a href="blog-detail-2.ejs">Daniel Ng</a></span>
 									</div>
 									<div class="info-block">
@@ -402,122 +365,122 @@
 	            <div class="swiper-wrapper">
 	            	<div class="swiper-slide active" data-val="0">
 
-						<a href="gallery.ejs">				<img class="img-responsive img-full" src="img/f1.jpg" alt="">
+						<a href="gallery.ejs">				<img class="/img-responsive /img-full" src="/img/f1.jpg" alt="">
 	            	 </a></div>
 	            	<div class="swiper-slide" data-val="1">
 						<a href="gallery.ejs">
 
-	            		 	 <img class="img-responsive img-full" src="img/f2.jpg" alt="">
+	            		 	 <img class="/img-responsive /img-full" src="/img/f2.jpg" alt="">
 	            	 </a></div>
 	            	<div class="swiper-slide" data-val="2">
 						<a href="gallery.ejs">
 
-	            		 	 <img class="img-responsive img-full" src="img/f3.jpg" alt="">
+	            		 	 <img class="/img-responsive /img-full" src="/img/f3.jpg" alt="">
 	            	 </a></div>
 	            	<div class="swiper-slide" data-val="3">
 						<a href="gallery.ejs">
 
-	            		 	 <img class="img-responsive img-full" src="img/f4.jpg" alt="">
+	            		 	 <img class="/img-responsive /img-full" src="/img/f4.jpg" alt="">
 	            	 </a></div>
 	            	<div class="swiper-slide" data-val="4">
 						<a href="gallery.ejs">
 
-	            		 	 <img class="img-responsive img-full" src="img/f5.jpg" alt="">
+	            		 	 <img class="/img-responsive /img-full" src="/img/f5.jpg" alt="">
 	            	 </a></div>
 	            	<div class="swiper-slide" data-val="5">
 						<a href="gallery.ejs">
 
-	            		 	 <img class="img-responsive img-full" src="img/f6.jpg" alt="">
+	            		 	 <img class="/img-responsive /img-full" src="/img/f6.jpg" alt="">
 	            	 </a></div>
 	            	<div class="swiper-slide" data-val="6">
 						<a href="gallery.ejs">
 
-	            		 	 <img class="img-responsive img-full" src="img/f7.jpg" alt="">
+	            		 	 <img class="/img-responsive /img-full" src="/img/f7.jpg" alt="">
 	            	 </a></div>
 	            	<div class="swiper-slide" data-val="7">
 						<a href="gallery.ejs">
 
-	            		 	 <img class="img-responsive img-full" src="img/f8.jpg" alt="">
+	            		 	 <img class="/img-responsive /img-full" src="/img/f8.jpg" alt="">
 	            	 </a></div>
 	            	<div class="swiper-slide" data-val="8">
 						<a href="gallery.ejs">
 
-	            		 	 <img class="img-responsive img-full" src="img/f9.jpg" alt="">
+	            		 	 <img class="/img-responsive /img-full" src="/img/f9.jpg" alt="">
 	            	 </a></div>
 	            	<div class="swiper-slide" data-val="9">
 						<a href="gallery.ejs">
 
-	            		 	 <img class="img-responsive img-full" src="img/f10.jpg" alt="">
+	            		 	 <img class="/img-responsive /img-full" src="/img/f10.jpg" alt="">
 	            	 </a></div>
 	            	<div class="swiper-slide" data-val="10">
 						<a href="gallery.ejs">
 
-	            		 	 <img class="img-responsive img-full" src="img/f11.jpg" alt="">
+	            		 	 <img class="/img-responsive /img-full" src="/img/f11.jpg" alt="">
 	            	 </a></div>
 	            	<div class="swiper-slide" data-val="11">
 						<a href="gallery.ejs">
 
-	            		 	 <img class="img-responsive img-full" src="img/f12.jpg" alt="">
+	            		 	 <img class="/img-responsive /img-full" src="/img/f12.jpg" alt="">
 	            	 </a></div>
 	            	<div class="swiper-slide" data-val="12">
 						<a href="gallery.ejs">
 
-	            		 	 <img class="img-responsive img-full" src="img/f13.jpg" alt="">
+	            		 	 <img class="/img-responsive /img-full" src="/img/f13.jpg" alt="">
 	            	 </a></div>
 	            	<div class="swiper-slide" data-val="13">
 						<a href="gallery.ejs">
 
-	            		 	 <img class="img-responsive img-full" src="img/f14.jpg" alt="">
+	            		 	 <img class="/img-responsive /img-full" src="/img/f14.jpg" alt="">
 	            	 </a></div>
 	            	<div class="swiper-slide" data-val="14">
 						<a href="gallery.ejs">
 
-	            		 	 <img class="img-responsive img-full" src="img/f15.jpg" alt="">
+	            		 	 <img class="/img-responsive /img-full" src="/img/f15.jpg" alt="">
 	            	 </a></div>
 	            	<div class="swiper-slide" data-val="15">
 						<a href="gallery.ejs">
 
-	            		 	 <img class="img-responsive img-full" src="img/f16.jpg" alt="">
+	            		 	 <img class="/img-responsive /img-full" src="/img/f16.jpg" alt="">
 	            	 </a></div>
 	            	<div class="swiper-slide" data-val="16">
 						<a href="gallery.ejs">
 
-	            		 	 <img class="img-responsive img-full" src="img/f17.jpg" alt="">
+	            		 	 <img class="/img-responsive /img-full" src="/img/f17.jpg" alt="">
 	            	 </a></div>
 	            	<div class="swiper-slide" data-val="17">
 						<a href="gallery.ejs">
 
-	            		 	 <img class="img-responsive img-full" src="img/f18.jpg" alt="">
+	            		 	 <img class="/img-responsive /img-full" src="/img/f18.jpg" alt="">
 	            	 </a></div>
 	            	<div class="swiper-slide" data-val="18">
 						<a href="gallery.ejs">
 
-	            		 	 <img class="img-responsive img-full" src="img/f19.jpg" alt="">
+	            		 	 <img class="/img-responsive /img-full" src="/img/f19.jpg" alt="">
 	            	 </a></div>
 	            	<div class="swiper-slide" data-val="19">
 						<a href="gallery.ejs">
 
-	            		 	 <img class="img-responsive img-full" src="img/f1.jpg" alt="">
+	            		 	 <img class="/img-responsive /img-full" src="/img/f1.jpg" alt="">
 	            	 </a></div>
 	            	<div class="swiper-slide" data-val="20">
 						<a href="gallery.ejs">
 
-	            		 	 <img class="img-responsive img-full" src="img/f2.jpg" alt="">
+	            		 	 <img class="/img-responsive /img-full" src="/img/f2.jpg" alt="">
 	            	 </a></div>
 	            	<div class="swiper-slide" data-val="21">
 						<a href="gallery.ejs">
 
-	            		 	 <img class="img-responsive img-full" src="img/f3.jpg" alt="">
+	            		 	 <img class="/img-responsive /img-full" src="/img/f3.jpg" alt="">
 	            	 </a></div>
 	            	<div class="swiper-slide" data-val="22">
 						<a href="gallery.ejs">
 
-	            		 	 <img class="img-responsive img-full" src="img/f4.jpg" alt="">
+	            		 	 <img class="/img-responsive /img-full" src="/img/f4.jpg" alt="">
 	            	 </a></div>
 	            	<div class="swiper-slide" data-val="23">
 						<a href="gallery.ejs">
 
-	            		 	 <img class="img-responsive img-full" src="img/f5.jpg" alt="">
+	            		 	 <img class="/img-responsive /img-full" src="/img/f5.jpg" alt="">
 	            	 </a></div>
 	            </div>
 	            <div class="pagination hidden"></div>
@@ -567,18 +530,18 @@
 					<div class="col-md-3 galerry">
 						<div class="footer-block">					
 							<h1 class="footer-title">Recent Works</h1>
-							<a href="blog-detail-2.ejs"><img src="img/g1.jpg" alt=""></a>
-							<a href="blog-detail-2.ejs"><img src="img/g2.jpg" alt=""></a>
-							<a href="blog-detail-2.ejs"><img src="img/g3.jpg" alt=""></a>
-							<a href="blog-detail-2.ejs"><img src="img/g4.jpg" alt=""></a>
-							<a href="blog-detail-2.ejs"><img src="img/g5.jpg" alt=""></a>
-							<a href="blog-detail-2.ejs"><img src="img/g6.jpg" alt=""></a>
-							<a href="blog-detail-2.ejs"><img src="img/g7.jpg" alt=""></a>
-							<a href="blog-detail-2.ejs"><img src="img/g8.jpg" alt=""></a>
-							<a href="blog-detail-2.ejs"><img src="img/g9.jpg" alt=""></a>
-							<a href="blog-detail-2.ejs"><img src="img/g10.jpg" alt=""></a>
-							<a href="blog-detail-2.ejs"><img src="img/g11.jpg" alt=""></a>
-							<a href="blog-detail-2.ejs"><img src="img/g12.jpg" alt=""></a>
+							<a href="blog-detail-2.ejs"><img src="/img/g1.jpg" alt=""></a>
+							<a href="blog-detail-2.ejs"><img src="/img/g2.jpg" alt=""></a>
+							<a href="blog-detail-2.ejs"><img src="/img/g3.jpg" alt=""></a>
+							<a href="blog-detail-2.ejs"><img src="/img/g4.jpg" alt=""></a>
+							<a href="blog-detail-2.ejs"><img src="/img/g5.jpg" alt=""></a>
+							<a href="blog-detail-2.ejs"><img src="/img/g6.jpg" alt=""></a>
+							<a href="blog-detail-2.ejs"><img src="/img/g7.jpg" alt=""></a>
+							<a href="blog-detail-2.ejs"><img src="/img/g8.jpg" alt=""></a>
+							<a href="blog-detail-2.ejs"><img src="/img/g9.jpg" alt=""></a>
+							<a href="blog-detail-2.ejs"><img src="/img/g10.jpg" alt=""></a>
+							<a href="blog-detail-2.ejs"><img src="/img/g11.jpg" alt=""></a>
+							<a href="blog-detail-2.ejs"><img src="/img/g12.jpg" alt=""></a>
 						</div>
 					</div>
 					<div class="col-md-3">
@@ -605,6 +568,9 @@
 				</div>
 			</div>
 		</div>
+        
+         <%  }; })%>
+        
 		<div class="footer-bottom">
 			<div class="container-fluid custom-container">
 				<div class="col-md-12 footer-end clearfix">
@@ -858,14 +824,14 @@
 	                       
 	        </div>
 	    </div>
-	   <div class="open"><img src="img/icon-134.png" alt=""></div>
+	   <div class="open"><img src="/img/icon-134.png" alt=""></div>
 	</div>
-	<!-- SCRIPT	-->
+	<!-- SCRIPT	
 	<script src="script/jquery-2.1.4.min.js"></script>
 	<script src="script/bootstrap.min.js"></script>		
 	<script src="script/idangerous.swiper.min.js"></script>
 	<script src="script/isotope.pkgd.min.js"></script>
 	<script src="script/jquery.viewportchecker.min.js"></script>		
-	<script src="script/global.js"></script>	
+	<script src="script/global.js"></script> -->	
 	</body>
 </html>
