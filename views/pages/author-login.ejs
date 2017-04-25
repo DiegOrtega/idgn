@@ -101,15 +101,18 @@
                     <div class="tab-wrapper style-1">
                         <div class="tab-nav-wrapper">
                             <div  class="nav-tab  clearfix">
-                                <div class="nav-tab-item active">
+                                
+                                <div class="nav-tab-item ">
+                                    
                                     <span>Recommendations</span>
                                 </div>
                                 <div class="nav-tab-item ">
                                     <span><%=nombre%>'s Music Data</span>
                                 </div>
-                                <div class="nav-tab-item ">
+                                <div class="nav-tab-item active">
                                     <span>Seed Track</span>
                                 </div> 
+                                
                                 <!-- <div class="nav-tab-item ">
                                     <span>Collections</span>
                                 </div>   -->                                                             
@@ -119,7 +122,9 @@
                         
                         
                         <div class="tabs-content clearfix">
-                            <div class="tab-info active"> 
+                            
+                            
+                            <div class="tab-info "> 
                                 
                         <div class="col-lg-12">
                             
@@ -156,7 +161,7 @@
 
                                         <% anti_playlist.tracks.forEach(function(records, index){ %>
                                 
-
+                                    
                                  
                                     <div class="col-ml-12 col-xs-6 col-sm-4" style="height:448px !important;">
                                     <div class="be-post">
@@ -179,7 +184,10 @@
                                         </div>
                                     </div>
                                   </div>
-                                 <%  })%>
+                                
+                                
+                                
+                                <%})%>
                                 
                                 
                                 </div>
@@ -368,7 +376,7 @@
 									</div>
 								</div>
                             </div>
-                            <div class="tab-info">
+                            <div class="tab-info active">
 								<div class="row">
 								<div class="col-lg-12 centro">
                                     <h2 style="font-family: 'Josefin Slab', serif;">Seed Track</h2>
@@ -381,9 +389,16 @@
 
                                 <div class=" col-lg-12  centro">
                                     <div class="be-post centro"  >
-                                        <a href="<%=urlS%>" target="_blank" class="be-img-block" style="max-height:300px;"  >
-                                        <img src="<%=imagenS%>" alt="omg" >
-                                        </a>
+                                        
+                                        
+                                            
+                                            <a href="<%=urlS%>" target="_blank" class="be-img-block" style="max-height:300px;"  >
+                                            <img src="<%=imagenS%>" alt="omg" >
+                                            </a>
+                                            
+                                       <iframe src="<%=urlS%>" height="30px;"></iframe> 
+                                        
+                                        
                                         <a href="blog-detail-2.ejs" class="be-post-title"><%= nombreAS %></a>
                                         <span>
                                             Popularity: <%= popS %> %
