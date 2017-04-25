@@ -127,19 +127,16 @@
                             
                         </div> 
                                 
+                        
                         <div class="col-lg-12 centro" style="margin:20px;">
-                             <div class=" btn btn-share color-5 size-2 hover-1  ">
-                               <a ><i class="fa fa-share-alt"></i>Add Playlist to Spotify Music Library </a>        
-                                <div class="share-buttons">
-                                        <a class="color-1" href="page1.ejs"><i class="fa fa-facebook"></i> 278</a>
-                                        <a class="color-2" href="page1.ejs"><i class="fa fa-twitter"></i> 180</a>
-                                        <a class="color-3" href="page1.ejs"><i class="fa fa-pinterest-p"></i> 78</a>
-                                        <a class="color-4" href="page1.ejs"><i class="fa fa-linkedin"></i> 53</a>
-                                    </div>
-                                <br/>
-                              </div> 
-                                
-                                <div class=" btn btn-share color-5 size-2 shover-1 ">
+                            
+                             <div class=" btn  ">
+                                <form  method="post" action="/create/playlist" id="createP">
+                                  <input class="form-control color-5 size-2 hover-1" placeholder="Name and add Playlist to Spotify Music Library" style="width:250px; font-size: 90%;" name="playlistname">
+                                </form>
+                            </div>
+                            <!-- 
+                                <div class=" btn btn-share color-5 size-2 hover-1 ">
                                <a ><i class="fa fa-share-alt"></i>Share Playlist</a>        
                                 <div class="share-buttons">
                                         <a class="color-1" href="page1.ejs"><i class="fa fa-facebook"></i> 278</a>
@@ -148,8 +145,11 @@
                                         <a class="color-4" href="page1.ejs"><i class="fa fa-linkedin"></i> 53</a>
                                     </div>
                                 <br/>
-                              </div>        
+                              </div>  -->  
+                                
+                             
                         </div>
+                     
                             
                                 
                             <div class="row">
@@ -831,12 +831,6 @@
 	   <div class="open"><img src="img/icon-134.png" alt=""></div>
 	</div>
 
-	<!-- SCRIPT	-->
-	<script src="script/jquery-2.1.4.min.js"></script>
-	<script src="script/bootstrap.min.js"></script>		
-	<script src="script/idangerous.swiper.min.js"></script>
-	<script src="script/isotope.pkgd.min.js"></script>	
-	<script src="script/jquery.viewportchecker.min.js"></script>	
-	<script src="script/global.js"></script>	
+		
 	</body>
 </html>

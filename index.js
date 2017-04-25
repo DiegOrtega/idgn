@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 var path = require('path');
 
-var nombre = "", email, external_urls, seguidores, imagen_url, pais, access_token = null, track_uri, track_uri_ref, num=20, bailongo = 0, energia = 0, fundamental=0, amplitud=0, modo=0, dialogo=0, acustica=0, instrumental=0, audiencia=0, positivismo=0, tempo=0, firma_tiempo=0, duracion=0, bailongo2 = 0, energia2 = 0, fundamental2=0, amplitud2=0, modo2=0, dialogo2=0, acustica2=0, instrumental2=0, audiencia2=0, positivismo2=0, tempo2=0, firma_tiempo2=0, duracion2=0, followers, anti_playlist = [], bailongoS, energiaS, fundamentalS, amplitudS, modoS, dialogoS, acusticaS, positivismoS, instrumentalS, audienciaS, tempoS, firma_tiempoS, duracionS, urlS, imagenS, nombreAS,  popS, nombreS ,trackid ,artist_data = [];
+var nombre = "", email, external_urls, seguidores, imagen_url, pais, access_token = null, track_uri, track_uri_ref, num=20, bailongo = 0, energia = 0, fundamental=0, amplitud=0, modo=0, dialogo=0, acustica=0, instrumental=0, audiencia=0, positivismo=0, tempo=0, firma_tiempo=0, duracion=0, bailongo2 = 0, energia2 = 0, fundamental2=0, amplitud2=0, modo2=0, dialogo2=0, acustica2=0, instrumental2=0, audiencia2=0, positivismo2=0, tempo2=0, firma_tiempo2=0, duracion2=0, followers, anti_playlist = [], bailongoS, energiaS, fundamentalS, amplitudS, modoS, dialogoS, acusticaS, positivismoS, instrumentalS, audienciaS, tempoS, firma_tiempoS, duracionS, urlS, imagenS, nombreAS,  popS, nombreS ,trackid ,artist_data = [], userid = "";
 
 
 //Protocolo de seguridad
@@ -116,7 +116,7 @@ app.get('/login', function(req, res) {
   res.cookie(stateKey, state);
 
   // your application requests authorization
-  var scope = 'user-read-private user-read-email playlist-read-private user-library-read user-top-read';
+  var scope = 'user-read-private user-read-email playlist-read-private user-library-read user-top-read playlist-modify-private';
     
   res.redirect('https://accounts.spotify.com/authorize/?' +
     querystring.stringify({
@@ -198,8 +198,8 @@ app.get('/callback', function(req, res) {
             seguidores =  bodyS.followers;
             imagen_url =  bodyS.images[0].url;
             followers = bodyS.followers.total;
+            userid = bodyS.id;
              
-         
         });
           
         var options2 = {
@@ -523,6 +523,105 @@ app.get('/profile', function(request, response) {
     nombreS: nombreS,
     track_uri: track_uri    
   });
+});
+
+
+app.post('/create/playlist', function(req, res){
+    
+    var playlistname = req.body.playlistname;
+    console.log('playlistname = ' + playlistname);
+    console.log('userid = ' + userid);
+    
+    var uris = [];
+    
+           // Create a private playlist
+        spotifyApi.createPlaylist(userid, playlistname, { 'public' : false })
+          .then(function(data) {
+            
+            console.log('Created playlist!');
+            console.log('data', data);
+            
+            anti_playlist.tracks.forEach(function(records, index){
+                uris[index] = records.uri;
+                console.log("uris[" + index+ "] = " + uris[index] );
+            });
+            
+            console.log("uris =", uris);
+            
+             // Add tracks to a playlist
+                spotifyApi.addTracksToPlaylist(userid, data.body.id, uris)
+                  .then(function(data) {
+                    console.log('Added tracks to playlist!');
+                     console.log('data', data);
+                  }, function(err) {
+                    console.log('Something went wrong! 2', err);
+                  });
+            
+            
+          }, function(err) {
+            console.log('Something went wrong! 1', err);
+          });
+        
+            res.render('pages/author-login.ejs', {
+                pais: pais,
+                nombre: nombre,
+                email: email,
+                external_urls: external_urls,
+                seguidores: seguidores,
+                imagen_url: imagen_url,
+                bailongo: bailongo,
+                energia: energia,
+                fundamental: fundamental,
+                amplitud: amplitud,
+                modo: modo,
+                dialogo: dialogo,
+                acustica: acustica,
+                instrumental: instrumental,
+                audiencia: audiencia,
+                positivismo: positivismo,
+                tempo: tempo,
+                firma_tiempo: firma_tiempo,
+                bailongo2: bailongo2,
+                energia2: energia2,
+                fundamental2: fundamental2,
+                amplitud2: amplitud2,
+                modo2: modo2,
+                dialogo2: dialogo2,
+                acustica2: acustica2,
+                instrumental2: instrumental2,
+                audiencia2: audiencia2,
+                positivismo2: positivismo2,
+                tempo2: tempo2,
+                firma_tiempo2: firma_tiempo2,    
+                duracion: duracion,
+                duracion2: duracion2,
+                followers: followers,
+                anti_playlist: anti_playlist,
+                ref: false,
+                track_uri_ref: track_uri_ref,
+                bailongoS: bailongoS,
+                energiaS: energiaS, 
+                fundamentalS: fundamentalS,
+                amplitudS: amplitudS, 
+                modoS: modoS,
+                dialogoS: dialogoS,
+                acusticaS: acusticaS, 
+                positivismoS: positivismoS,
+                instrumentalS: instrumentalS,
+                audienciaS: audienciaS,
+                tempoS: tempoS, 
+                firma_tiempoS: firma_tiempoS,
+                duracionS: duracionS,
+                urlS: urlS, 
+                imagenS: imagenS, 
+                nombreAS: nombreAS,  
+                popS: popS, 
+                nombreS: nombreS,
+                track_uri: track_uri    
+
+              });
+       
+    
 });
 
 app.get('/author.ejs', function(request, response) {
