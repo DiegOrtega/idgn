@@ -14,9 +14,15 @@
 		<img class="logo-c be_logo" src="img/logo-red.png" alt="logo"> -->
 	</a>
 </div>
-                
+     
+<% if(ref){ %> 
  <a class="btn color-1 size-2 hover-2 hidden-lg hidden-md hidden-sm visble-xs" href="/about-us.ejs" style="color:white;  margin-left: 20px; margin-top:22px; color:silver; text-align: left; "><i class="fa fa-info-circle"></i>
 How even</a>
+<% }else{ %>
+    <a class="btn color-1 size-2 hover-2 hidden-xs" href="/"  style="color:white; margin-left: 20px; margin-top:22px; color:silver; text-align: left;"><i class="fa fa-info-circle"></i>
+    Try it!</a>
+                    
+<% } %>
 				<!-- <div class="header-menu-block">
 					<button class="cmn-toggle-switch cmn-toggle-switch__htx"><span></span></button>
 					<ul class="header-menu" id="one">
