@@ -102,9 +102,7 @@ app.use(express.static(__dirname + '/public'))
 //Página de inicio hacia la autorizacion
 app.get('/', function(req, res){
         res.render('pages/autorizacion', {
-            ref: false,
-            imagen_url: imagen_url,
-            nombre: nombre
+                
         });        
 });
 
