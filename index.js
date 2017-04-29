@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 var path = require('path');
 
-var nombre = "", email, external_urls, seguidores, imagen_url, pais, access_token = null, track_uri, track_uri_ref, num=20, bailongo = 0, energia = 0, fundamental=0, amplitud=0, modo=0, dialogo=0, acustica=0, instrumental=0, audiencia=0, positivismo=0, tempo=0, firma_tiempo=0, duracion=0, bailongo2 = 0, energia2 = 0, fundamental2=0, amplitud2=0, modo2=0, dialogo2=0, acustica2=0, instrumental2=0, audiencia2=0, positivismo2=0, tempo2=0, firma_tiempo2=0, duracion2=0, followers, anti_playlist = [], bailongoS, energiaS, fundamentalS, amplitudS, modoS, dialogoS, acusticaS, positivismoS, instrumentalS, audienciaS, tempoS, firma_tiempoS, duracionS, urlS, imagenS, nombreAS,  popS, nombreS ,trackid ,artist_data = [], userid = "";
+var nombre = "", email, external_urls, seguidores, imagen_url, pais, access_token = null, track_uri, track_uri_ref, num=20, bailongo = 0, energia = 0, fundamental=0, amplitud=0, modo=0, dialogo=0, acustica=0, instrumental=0, audiencia=0, positivismo=0, tempo=0, firma_tiempo=0, duracion=0, bailongo2 = 0, energia2 = 0, fundamental2=0, amplitud2=0, modo2=0, dialogo2=0, acustica2=0, instrumental2=0, audiencia2=0, positivismo2=0, tempo2=0, firma_tiempo2=0, duracion2=0, followers, anti_playlist = [], bailongoS, energiaS, fundamentalS, amplitudS, modoS, dialogoS, acusticaS, positivismoS, instrumentalS, audienciaS, tempoS, firma_tiempoS, duracionS, urlS, imagenS, nombreAS,  popS, nombreS ,trackid ,artist_data = [], userid = "", uri_S, track_uri_ref2 = [], seedTracks = [];
 
 
 //Protocolo de seguridad
@@ -214,13 +214,15 @@ app.get('/callback', function(req, res) {
             
             bailongo = 0, energia = 0, fundamental=0, amplitud=0, modo=0, dialogo=0, acustica=0, instrumental=0, audiencia=0, positivismo=0, tempo=0, firma_tiempo=0, duracion=0, bailongo2 = 0, energia2 = 0, fundamental2=0, amplitud2=0, modo2=0, dialogo2=0, acustica2=0, instrumental2=0, audiencia2=0, positivismo2=0, tempo2=0, firma_tiempo2=0, duracion2=0;
             
-            body.items.forEach(function(record){
+            body.items.forEach(function(record, index){
                 
                 track_uri = record.uri;
                 track_uri = track_uri.substring(14);
                 console.log(track_uri);
                 
-                
+                if(index < 5){
+                    track_uri_ref2[index] = track_uri;
+                };
                    
                 
                  spotifyApi.getAudioFeaturesForTrack(track_uri)
@@ -270,7 +272,7 @@ app.get('/callback', function(req, res) {
                           //Request por información de la semilla
                          
                        var options4 = {
-                          url: 'https://api.spotify.com/v1/tracks/' + track_uri_ref, 
+                          url: 'https://api.spotify.com/v1/tracks/?ids=' + track_uri_ref2, 
                           headers: { 'Authorization': 'Bearer ' + access_token },
                           json: true
                         };  
@@ -283,16 +285,18 @@ app.get('/callback', function(req, res) {
                         request.get(options4, function(error, response, bodyS) {
                         if(error){console.log(error)}
                             
+                            console.log('seedTracks info');
+                            console.log(bodyS);
+                            
+                            
                             console.log('response de info del seed');
                             console.log(response.statusCode);
                             
-                            urlS =  bodyS.preview_url;
-                            imagenS = bodyS.album.images[0].url;
-                            nombreAS = bodyS.name;
-                            popS = bodyS.popularity;
-                            console.log('popS ' );
-                            console.log( popS);
-                            nombreS = bodyS.artists[0].name; 
+                            bodyS.tracks.forEach(function(records, index){
+                                seedTracks[index] = bodyS.tracks[index].uri;
+                                console.log('seedTracks ', [index]);
+                                console.log(seedTracks); 
+                            });
                         
                         });
                          
@@ -349,7 +353,7 @@ app.get('/callback', function(req, res) {
                     
                         var options3 = {
                           url: 'https://api.spotify.com/v1/recommendations?'+'seed_tracks=' + 
-                          track_uri_ref + '&target_acousticness='+ acustica2 + '&target_danceability=' + 
+                          track_uri_ref2 + '&target_acousticness='+ acustica2 + '&target_danceability=' + 
                           bailongo2 + '&target_energy=' + energia2 + '&target_key=' + fundamental2 + '&target_loudness=' + amplitud +
                           '&target_mode=' + modo2 + '&target_speechiness=' + dialogo2 + '&target_acousticness=' + acustica2 + 
                           '&target_instrumentalness=' + instrumental2 + '&target_liveness=' + audiencia2 + '&target_valence=' + positivismo2 
@@ -521,7 +525,9 @@ app.get('/profile', function(request, response) {
     nombreAS: nombreAS,  
     popS: popS, 
     nombreS: nombreS,
-    track_uri: track_uri    
+    track_uri: track_uri,
+    uri_S: uri_S,
+    seedTracks: seedTracks   
   });
 });
 
@@ -617,8 +623,9 @@ app.post('/create/playlist', function(req, res){
                 nombreAS: nombreAS,  
                 popS: popS, 
                 nombreS: nombreS,
-                track_uri: track_uri    
-
+                track_uri: track_uri,    
+                uri_S: uri_S,
+                seedTracks: seedTracks 
               });
        
     
@@ -729,8 +736,9 @@ app.get('/perfil', function(request, response) {
     nombreAS: nombreAS,  
     popS: popS, 
     nombreS: nombreS,
-    track_uri: track_uri    
-        
+    track_uri: track_uri, 
+    uri_S: uri_S,
+    seedTracks: seedTracks,
   });
     
 });
@@ -808,7 +816,9 @@ app.post('/track/profile', function(req, res){
                     nombreAS: nombreAS,  
                     popS: popS, 
                     nombreS: nombreS,
-                    track_uri: track_uri    
+                    track_uri: track_uri,
+                    uri_S: uri_S,
+                    seedTracks: seedTracks,
       
                     });
                 
@@ -881,8 +891,9 @@ app.get('/track', function(request, response) {
     nombreAS: nombreAS,  
     popS: popS, 
     nombreS: nombreS,
-    track_uri: track_uri    
-      
+    track_uri: track_uri,    
+    uri_S: uri_S,
+    seedTracks: seedTracks,
   });
 });
 

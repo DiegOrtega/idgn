@@ -74,7 +74,7 @@
 							<div class="be-desc-text">
 				            The recommendations are created trhough a careful search inside Spotify Database. <br>
                                 <br/>
-                            For a starting point, we take a look at the universe of songs surrounding your <em>Seed Track</em>. From there we now look for songs with opposite features from those measured at your <em>top tracks</em> list.<br>
+                            For a starting point, we take a look at the universe of songs surrounding your <em>Seed Tracks</em>. From there we now look for songs with opposite features from those measured at your <em>top tracks</em> list.<br>
                                 <br/>
                             To know what you wouldn't normally listen to, we first study what you like. At the <em><%=nombre%>'s Music Data</em> section you can find more about our algorithm.<br>
                                 <br/>
@@ -110,7 +110,7 @@
                                     <span><%=nombre%>'s Music Data</span>
                                 </div>
                                 <div class="nav-tab-item active">
-                                    <span>Seed Track</span>
+                                    <span>Seed Tracks</span>
                                 </div> 
                                 
                                 <!-- <div class="nav-tab-item ">
@@ -188,6 +188,7 @@
                                 
                                 
                                 <%})%>
+                                
                                 
                                 
                                 </div>
@@ -379,42 +380,27 @@
                             <div class="tab-info active">
 								<div class="row">
 								<div class="col-lg-12 centro">
-                                    <h2 style="font-family: 'Josefin Slab', serif;">Seed Track</h2>
+                                    <h2 style="font-family: 'Josefin Slab', serif;">Seed Tracks</h2>
                                     
+                                   
+                                    <h3 style="font-family: 'Josefin Slab', serif;">These seeds are the songs you listen the most.</h3>
+                                    <h4 style="font-family: 'Josefin Slab', serif;">These songs are connected with a universe of music with related features inside the Spotify Database. With these seeds as starting point, the algorithm becomes controled and searches for music within this universe.</h4>
                                     <br/>
                                     
                                 </div>
                                     
+                         <% seedTracks.forEach(function(records, index){ %>
+                           <h4 style="font-family: 'Josefin Slab', serif;" ># <%=index + 1%></h4>         
+                          <div class="be-largepost-iframe 
+							embed-responsive embed-responsive-16by9 centro" style="text-align: center;" >
                                 
-
-                                <div class=" col-lg-12  centro">
-                                    <div class="be-post centro"  >
-                                        
-                                        
-                                            
-                                            <a href="<%=urlS%>" target="_blank" class="be-img-block" style="max-height:300px;"  >
-                                            <img src="<%=imagenS%>" alt="omg" >
-                                            </a>
-                                            
-                                       <iframe src="<%=urlS%>" height="50px;"></iframe> 
-                                        
-                                        
-                                        <a href="blog-detail-2.ejs" class="be-post-title"><%= nombreAS %></a>
-                                        <span>
-                                            Popularity: <%= popS %> %
-                                        </span>
-                                        <div class="author-post">
-                                            <span>by <a href="blog-detail-2.ejs"><%= nombreS %></a></span>
-                                        </div>
-                                         <p>
-                                                   The seed is the song you hear the most.<br>
-                                                    <br>
-                                                    This song is connected with a universe of songs with related features inside the Spotify Database.
-                                                   With this seed as starting point, the algorithm becomes controled and searches for music within this universe. <a href="/about-us.ejs" target="_blank">More info...</a>
-                                                </p>
-                                    </div>
-                                  </div>
-            																				
+                                
+								 <iframe src="https://open.spotify.com/embed?uri=<%=records%>&theme=white&view=coverart" width="640" height="720" frameborder="0" allowtransparency="true" class="" ></iframe>
+                                
+                              
+							</div>	
+                                    
+                        <% }) %>
 								</div>                                                                 
                             </div>
                         </div>
