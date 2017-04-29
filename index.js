@@ -110,7 +110,7 @@ nombre = "",  access_token = null, num=20, bailongo = 0, energia = 0, fundamenta
                     email: email,
                     external_urls: external_urls,
                     seguidores: seguidores,
-                    imagen_url: imagen_url,
+                    imagen_url: "",
                     bailongo: bailongo,
                     energia: energia,
                     fundamental: fundamental,
@@ -255,7 +255,9 @@ app.get('/callback', function(req, res) {
             email = bodyS.email;
             external_urls = bodyS.external_urls;
             seguidores =  bodyS.followers;
-            imagen_url =  bodyS.images[0].url;
+            if(bodyS.images.length > 0){
+                imagen_url =  bodyS.images[0].url;
+            };
             followers = bodyS.followers.total;
             userid = bodyS.id;
              
@@ -467,6 +469,7 @@ app.get('/callback', function(req, res) {
     });
   }
 
+    
 });
 
 //Finaliza proceso
