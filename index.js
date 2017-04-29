@@ -104,11 +104,11 @@ app.get('/', function(req, res){
     
         res.render('pages/autorizacion', {
                   pais: pais,
-                    nombre: nombre,
+                    nombre: "",
                     email: email,
                     external_urls: external_urls,
                     seguidores: seguidores,
-                    imagen_url: imagen_url,
+                    imagen_url: "",
                     bailongo: bailongo,
                     energia: energia,
                     fundamental: fundamental,
