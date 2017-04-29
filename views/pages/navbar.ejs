@@ -34,13 +34,14 @@ How even</a>
 					</ul>
 				</div> -->
 				<div class="login-header-block" style="margin-right:10px;">
-					<div class="login_block" >
+					<div class="login_block" style="margin-top:9px;" >
                         <% if(nombre != ""){ %>
-                        <a href="/profile" style="color:white;" > 
-                        <img class="login-user" src="<%=imagen_url%>" alt="" style="border-radius:5px; height:40px;">
-							<span class="be-dropdown-content" style="margin-right:20px;"><span><%= nombre %></span></span></a>
-                        
-                    
+                        <a href="/profile" style="color:white; " > 
+                        <img class="login-user" src="<%=imagen_url%>" alt="" style="border-radius:5px; height:30px; ">
+                        <span class="be-dropdown-content" style="">
+                            <span style="margin-top:40px;"><%= nombre %></span>
+                        </span>
+                        </a>
                         <% } %>
                         
                         </div>	
