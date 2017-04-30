@@ -217,13 +217,13 @@
                         <tbody>
                             <tr>
                                 <th>Danceability</th>
-                                <td><%=bailongo.toFixed(3)%>%</td>
-                                <td><%=bailongo2.toFixed(3)%>%</td>
+                                <td><%=bailongo.toFixed(1)%>/100</td>
+                                <td><%=bailongo2.toFixed(1)%>/100</td>
                             </tr>
                             <tr>
                                 <th>Energy</th>
-                                <td><%=energia.toFixed(3)%>%</td>
-                                <td><%=energia2.toFixed(3)%>%</td>
+                                <td><%=energia.toFixed(1)%>/100</td>
+                                <td><%=energia2.toFixed(1)%>/100</td>
                             </tr>
                             <tr>
                                 <th>Key</th>
@@ -306,12 +306,12 @@
                                 } 
                                 %>
                                 <td><%=fundamental%></td>
-                                <td>Not proccesed data</td>
+                                <td><%= fundamental2 %></td>
                             </tr>
                             <tr>
                                 <th>Loudness</th>
-                                <td><%=amplitud.toFixed(3)%> dB</td>
-                                <td>Not processed data</td>
+                                <td><%=amplitud.toFixed(1)%> dB</td>
+                                <td><%= amplitud2.toFixed(1) %> dB </td>
                             </tr>
                             <tr>
                                 <th>Mode</th>
@@ -334,47 +334,53 @@
                                 };
                                 %>
                                 <td><%=modo%></td>
-                                <td>Not proccesed data</td>
+                                <td><%= modo2 %></td>
                             </tr>
                             <tr>
                                 <th>Speechiness</th>
-                                <td><%=dialogo.toFixed(3)%>%</td>
-                                <td><%=dialogo2.toFixed(3)%>%</td>
+                                <td><%=dialogo.toFixed(1)%>/100</td>
+                                <td><%=dialogo2.toFixed(1)%>/100</td>
                             </tr>
                             <tr>
                                 <th>Acousticness</th>
-                                <td><%=acustica.toFixed(3)%>%</td>
-                                <td><%=acustica2.toFixed(3)%>%</td>
+                                <td><%=acustica.toFixed(1)%>/100</td>
+                                <td><%=acustica2.toFixed(1)%>/100</td>
                             </tr>
                             <tr>
                                 <th>Instrumentalness</th>
-                                <td><%=instrumental.toFixed(3)%>%</td>
-                                <td><%=instrumental2.toFixed(3)%>%</td>
+                                <td><%=instrumental.toFixed(1)%>/100</td>
+                                <td><%=instrumental2.toFixed(1)%>/100</td>
                             </tr>
                             <tr>
                                 <th>Liveness</th>
-                                <td><%=audiencia.toFixed(3)%>%</td>
-                                <td><%=audiencia2.toFixed(3)%>%</td>
+                                <td><%=audiencia.toFixed(1)%>/100</td>
+                                <td><%=audiencia2.toFixed(1)%>/100</td>
                             </tr>
                             <tr>
                                 <th>Valence</th>
-                                <td><%=positivismo.toFixed(3)%>%</td>
-                                <td><%=positivismo2.toFixed(3)%>%</td>
+                                <td><%=positivismo.toFixed(1)%>/100</td>
+                                <td><%=positivismo2.toFixed(1)%>/100</td>
                             </tr>
                             <tr>
                                 <th>Tempo</th>
-                                <td><%=tempo.toFixed(3)%> BPM</td>
-                                <td>Not processed data</td>
+                                <td><%=tempo.toFixed(1)%> BPM</td>
+                                <td><%=tempo2.toFixed(1)%> BPM</td>
                             </tr>
                             <tr>
                                 <th>Duration</th>
-                                <td><%=duracion%> mS</td>
-                                <td>not processed data</td>
+                                <td><%=duracion.toFixed(1)%> Minutes Average</td>
+                                <td>
+                                    <% if(duracion2 == 'min_'){ %>
+                                        More than <%=duracion.toFixed(1)%> Minutes Average
+                                    <% }else if(duracion2 == 'max_'){ %>
+                                        Less than <%=duracion.toFixed(1)%> Minutes Average
+                                    <% } %>
+                                </td>
                             </tr>
                             <tr>
                                 <th>Beats per bar</th>
                                 <td><%=Math.round(firma_tiempo)%></td>
-                                <td>Not processed data</td>
+                                <td><%= Math.round(firma_tiempo2) %></td>
                             </tr>
                         </tbody>
                     </table>							

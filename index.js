@@ -393,7 +393,8 @@ app.get('/callback', function(req, res) {
                         audiencia = (audiencia/num)*100;
                         tempo = tempo/num;
                         firma_tiempo = firma_tiempo/num;
-                        duracion = duracion/num;
+                        duracion = Math.round(duracion/num);
+                        
                         
                     
                         console.log('bailongo: ' + bailongo);
@@ -410,17 +411,41 @@ app.get('/callback', function(req, res) {
                         console.log('firma_tiempo:' + firma_tiempo);
                         console.log('duracion: ' + duracion);
                         
-                        acustica2 = Math.abs(acustica-50);
                         bailongo2 = Math.abs(bailongo-50);
                         energia2 = Math.abs(energia-50);
+                        fundamental2 = Math.round(Math.abs(fundamental-5));
+                        amplitud2 = (-Math.abs(amplitud+30));
+                        acustica2 = Math.abs(acustica-50);
                         dialogo2 = Math.abs(dialogo-50);
                         positivismo2 = Math.abs(positivismo-50);
                         instrumental2 = Math.abs(instrumental-50);
                         audiencia2 = Math.abs(audiencia-50);
-                        fundamental2 = Math.round(fundamental);
-                        duracion2 = Math.round(duracion);
-                        modo2 = Math.round(modo);
-                        firma_tiempo2 = Math.round(firma_tiempo);
+                        
+                        if(Math.random() > 0.5){
+                          duracion2 = 'min_';  
+                        }else{
+                          duracion2 = 'max_';   
+                        }
+                        
+                        
+                        if(modo == 1){
+                            modo2 = 0;    
+                        }else if(modo == 0){
+                            modo2 = 1;
+                        };
+                        tempo2 = Math.floor(Math.random() * 101) + 60;
+                        
+                        var test = false;
+                        
+                        while(test == false){
+                            firma_tiempo2 = Math.floor(Math.random() * 6) + 2;
+                            if( firma_tiempo2 != firma_tiempo){
+                                test = true;
+                                console.log('firma_tiempo2 = ' + firma_tiempo2);
+                            }
+                        }
+                        
+                        
                         
                      
                     
@@ -430,10 +455,12 @@ app.get('/callback', function(req, res) {
                           bailongo2 + '&target_energy=' + energia2 + '&target_key=' + fundamental2 + '&target_loudness=' + amplitud +
                           '&target_mode=' + modo2 + '&target_speechiness=' + dialogo2 + '&target_acousticness=' + acustica2 + 
                           '&target_instrumentalness=' + instrumental2 + '&target_liveness=' + audiencia2 + '&target_valence=' + positivismo2 
-                          + '&target_tempo=' + tempo2 + '&target_time_signature=' + firma_tiempo2,
+                          + '&target_tempo=' + tempo2 + '&target_time_signature=' + firma_tiempo2 + '&target_loudness=' + amplitud2 + '&' + duracion2 + 'duration_ms=' + duracion,
                           headers: { 'Authorization': 'Bearer ' + access_token },
                           json: true
                         };  
+                        
+                        
                         
                         console.log(options3);
                      
@@ -454,6 +481,8 @@ app.get('/callback', function(req, res) {
                             
                             console.log('anti_playlist');
                             console.log(anti_playlist);
+                            
+                            duracion = (duracion/1000/60);
                             
                             // we can also pass the token to the browser to make requests from there
                             res.redirect('/perfil#' +
