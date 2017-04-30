@@ -232,7 +232,7 @@ app.get('/callback', function(req, res) {
 
     request.post(authOptions, function(error, response, bodyS) {
       if (!error && response.statusCode === 200) {
-            access_token = null;
+           
             access_token = bodyS.access_token,
             refresh_token = bodyS.refresh_token;
           
@@ -259,8 +259,9 @@ app.get('/callback', function(req, res) {
             email = bodyS.email;
             external_urls = bodyS.external_urls;
             seguidores =  bodyS.followers;
-            if(bodyS.images.length > 0){
-                imagen_url = "";
+            imagen_url = "";
+            if(bodyS.images[0].length > 0){
+                
                 console.log('imagen_url');
                 console.log(imagen_url);
                 imagen_url =  bodyS.images[0].url;
