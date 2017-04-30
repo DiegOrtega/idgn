@@ -260,7 +260,7 @@ app.get('/callback', function(req, res) {
             external_urls = bodyS.external_urls;
             seguidores =  bodyS.followers;
             imagen_url = "";
-            if(bodyS.images[0].length > 0){
+            if(bodyS.images[0] != undefined){
                 
                 console.log('imagen_url');
                 console.log(imagen_url);
