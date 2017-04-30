@@ -437,8 +437,13 @@ app.get('/callback', function(req, res) {
                             console.log(bodyS.tracks[0].artists);
                             console.log(bodyS.tracks[0].album.images[0].url);
                             
+                            console.log('anti_playlist');
+                            console.log(anti_playlist);
                              anti_playlist = [];
                             anti_playlist = bodyS;
+                            
+                            console.log('anti_playlist');
+                            console.log(anti_playlist);
                             
                             // we can also pass the token to the browser to make requests from there
                             res.redirect('/perfil#' +
