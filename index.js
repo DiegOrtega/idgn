@@ -275,6 +275,8 @@ app.get('/callback', function(req, res) {
             
             bailongo = 0, energia = 0, fundamental=0, amplitud=0, modo=0, dialogo=0, acustica=0, instrumental=0, audiencia=0, positivismo=0, tempo=0, firma_tiempo=0, duracion=0, bailongo2 = 0, energia2 = 0, fundamental2=0, amplitud2=0, modo2=0, dialogo2=0, acustica2=0, instrumental2=0, audiencia2=0, positivismo2=0, tempo2=0, firma_tiempo2=0, duracion2=0;
             
+            anti_playlist = []; 
+            
             body.items.forEach(function(record, index){
                 
                 track_uri = record.uri;
@@ -435,7 +437,7 @@ app.get('/callback', function(req, res) {
                             console.log(bodyS.tracks[0].artists);
                             console.log(bodyS.tracks[0].album.images[0].url);
                             
-                            
+                             anti_playlist = [];
                             anti_playlist = bodyS;
                             
                             // we can also pass the token to the browser to make requests from there
