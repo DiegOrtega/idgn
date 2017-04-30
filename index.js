@@ -232,9 +232,12 @@ app.get('/callback', function(req, res) {
 
     request.post(authOptions, function(error, response, bodyS) {
       if (!error && response.statusCode === 200) {
-
+            access_token = null;
             access_token = bodyS.access_token,
             refresh_token = bodyS.refresh_token;
+          
+          console.log('access_token');
+          console.log(access_token);
           
           spotifyApi.setAccessToken(access_token);
 
@@ -249,6 +252,7 @@ app.get('/callback', function(req, res) {
             
             console.log("Datos:");
             console.log(bodyS);
+            
             pais = bodyS.country;
             nombre = bodyS.display_name;
             console.log(bodyS.display_name);
@@ -256,7 +260,12 @@ app.get('/callback', function(req, res) {
             external_urls = bodyS.external_urls;
             seguidores =  bodyS.followers;
             if(bodyS.images.length > 0){
+                imagen_url = "";
+                console.log('imagen_url');
+                console.log(imagen_url);
                 imagen_url =  bodyS.images[0].url;
+                console.log('imagen_url');
+                console.log(imagen_url);
             };
             followers = bodyS.followers.total;
             userid = bodyS.id;

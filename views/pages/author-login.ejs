@@ -167,10 +167,8 @@
                                     <div class="be-post">
                                         
                                         <form method="post" action="/track/profile" id="trackprofile" >
-                                        <button class="be-img-block" form="trackprofile" type="submit" name="index"  value="<%=index%>"  > 
-                                        <img src="<%if(records.album.images.lenght > 0 ){ %>
-                                                  <%=records.album.images[0].url%>
-                                                  <%}%>" alt="omg">
+                                        <button class="be-img-block" form="trackprofile" type="submit" name="index"  value="<%=index%>"> 
+                                        <img src="<%=records.album.images[0].url%>" alt="omg">
                                         </button>   
                                         </form>
                                      
