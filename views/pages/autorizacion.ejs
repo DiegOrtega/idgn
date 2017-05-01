@@ -94,11 +94,24 @@
 
  
     
-  <body>
+  <body class="page-login">
     
-      <% include ../pages/navbar.ejs %>
+      	<!-- THE LOADER -->
+	
+<div class="be-loader" >
+    	<div class="spinner">
+			<img src="img/logo-loader.png"  alt="">
+			<p class="circle">
+			  <span class="ouro">
+			    <span class="left"><span class="anim"></span></span>
+			    <span class="right"><span class="anim"></span></span>
+			  </span>
+			</p>
+    </div></div>
       
-   
+      <% include ../pages/navbar.ejs %>
+  
+            
       <div id="login" class="contenedor row hidden-xs" style="margin-top:200px; font-family: 'Josefin Slab', serif; margin-bottom:300px;">
           <br>
           <div class="col-lg-12">
@@ -212,7 +225,7 @@
         <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button>
       </div>
     
-
+   
     <script id="user-profile-template" type="text/x-handlebars-template">
       <h1>Logged in as {{display_name}}</h1>
       <div class="media">
