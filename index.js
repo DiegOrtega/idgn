@@ -439,7 +439,7 @@ app.get('/callback', function(req, res) {
                         
                         while(test == false){
                             firma_tiempo2 = Math.floor(Math.random() * 6) + 2;
-                            if( firma_tiempo2 != firma_tiempo){
+                            if(firma_tiempo2 != firma_tiempo){
                                 test = true;
                                 console.log('firma_tiempo2 = ' + firma_tiempo2);
                             }
