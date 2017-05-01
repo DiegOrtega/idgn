@@ -1,25 +1,16 @@
 <!doctype html>
 <html>
-    
-    
   <head>
     
       <% include ../partials/header.ejs  %>
-
+   
     <style type="text/css">
-        .centro{
-            text-align: center;
-            margin: auto 0;
-            
-        }
-
         
-        h2, #login {
+        h2, #login, .centro {
                 margin: 0 auto; 
                 width: 50%;
             }
-        
-       
+
          .contenedor{
                     background-color: #e8e9eb;
                     border-radius: 20px;
@@ -105,11 +96,9 @@
     
   <body>
     
-      <header>
-		<% include ../pages/navbar.ejs %>
-	</header>
+      <% include ../pages/navbar.ejs %>
       
-    <div class="container-fluid" > 
+   
       <div id="login" class="contenedor row hidden-xs" style="margin-top:200px; font-family: 'Josefin Slab', serif; margin-bottom:300px;">
           <br>
           <div class="col-lg-12">
@@ -163,7 +152,7 @@
       </div>
         
          
-      <div id="" class="contenedor row visible-xs centro" style="font-family: 'Josefin Slab', serif; margin-top:200px; margin-bottom:200px; max-width:500px; min-width:300px !important;">
+      <div id="login" class="contenedor row visible-xs centro" style="font-family: 'Josefin Slab', serif; margin-top:200px; margin-bottom:200px; max-width:500px; min-width:300px !important;">
           <br>
           <div class="col-lg-12">
                 <h1>IDGN</h1>
@@ -184,10 +173,10 @@
             <h3>An opportunity to break our <em>Echo Chamber</em>. </h3>
           </div>
           <br>
-          <div class="centro">
+          <div class="centro" >
                <div class="col-lg-12 hidden-md hidden-sm hidden-xs" style="margin-bottom:25px;">
                     <a href="/login" >
-                      <div class="btn color-1 size-2 hover-3" style="text-align: center; ">
+                      <div class="centro btn color-1 size-2 hover-3" style="text-align: center;  width: 100%;">
                           <span style="color:black; font-family: 'Orbitron', sans-serif; text-align: center; font-size:200%;">
                               Go ON
                           </span>
@@ -196,16 +185,16 @@
               </div>
               <div class=" hidden-lg col-md-12 hidden-xs" style="margin-bottom:25px;">
                     <a href="/login" >
-                      <div class=" btn color-1 size-2 hover-3" style="text-align: center; ">
+                      <div class="centro btn color-1 size-2 hover-3" style="text-align: center;  width: 100%;">
                           <span style="color:black; font-family: 'Orbitron', sans-serif; text-align: center; font-size:150%;">
                               Go ON
                           </span>
                       </div>
                     </a>
               </div>
-               <div class=" hidden-lg hidden-md hidden-sm col-xs-12" style="margin-bottom:25px;">
+               <div class=" hidden-lg hidden-md hidden-sm col-lg-12" style="margin-bottom:25px;">
                     <a href="/login" >
-                      <div class=" btn color-1 size-2 hover-3" style="text-align: center;">
+                      <div class="centro btn color-1 size-2 hover-3" style="text-align: center;  width: 100%;">
                           <span style="color:black; font-family: 'Orbitron', sans-serif; text-align: center; font-size:100%;">
                               Go ON
                           </span>
@@ -330,9 +319,6 @@
         }
       })();
     </script>
- 
-      </div>
-        </body>
+  </body>
 </html>
-
-     <% include ../partials/footer.ejs %>
+<% include ../partials/footer.ejs  %>
