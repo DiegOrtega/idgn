@@ -557,7 +557,10 @@ app.get('/index.ejs', function(request, response) {
   response.render('pages/index');
 });
 
-app.get('/about-us.ejs', function(request, response) {     
+app.get('/about-us.ejs', function(request, response) { 
+    
+    var nombre = "", email, external_urls, seguidores, imagen_url, pais, access_token = null, track_uri, track_uri_ref, num=20, bailongo = 0, energia = 0, fundamental=0, amplitud=0, modo=0, dialogo=0, acustica=0, instrumental=0, audiencia=0, positivismo=0, tempo=0, firma_tiempo=0, duracion=0, bailongo2 = 0, energia2 = 0, fundamental2=0, amplitud2=0, modo2=0, dialogo2=0, acustica2=0, instrumental2=0, audiencia2=0, positivismo2=0, tempo2=0, firma_tiempo2=0, duracion2=0, followers, anti_playlist = [], bailongoS, energiaS, fundamentalS, amplitudS, modoS, dialogoS, acusticaS, positivismoS, instrumentalS, audienciaS, tempoS, firma_tiempoS, duracionS, urlS, imagenS, nombreAS,  popS, nombreS ,trackid ,artist_data = [], userid = "", uri_S, track_uri_ref2 = [], seedTracks = [];
+    
   response.render('pages/about-us', {
       ref: true,
       imagen_url: imagen_url,
