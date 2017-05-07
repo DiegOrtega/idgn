@@ -742,6 +742,10 @@ app.post('/create/playlist', function(req, res){
     
 });
 
+app.get('/environment', function(request, response) {
+  response.render('pages/environment');
+});
+
 app.get('/author.ejs', function(request, response) {
   response.render('pages/author');
 });
