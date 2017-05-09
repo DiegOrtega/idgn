@@ -7,6 +7,7 @@ var SpotifyWebApi = require('spotify-web-api-node');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 var path = require('path');
+var sc = require('supercolliderjs');
 
 var nombre = "", email, external_urls, seguidores, imagen_url, pais, access_token = null, track_uri, track_uri_ref, num=20, bailongo = 0, energia = 0, fundamental=0, amplitud=0, modo=0, dialogo=0, acustica=0, instrumental=0, audiencia=0, positivismo=0, tempo=0, firma_tiempo=0, duracion=0, bailongo2 = 0, energia2 = 0, fundamental2=0, amplitud2=0, modo2=0, dialogo2=0, acustica2=0, instrumental2=0, audiencia2=0, positivismo2=0, tempo2=0, firma_tiempo2=0, duracion2=0, followers, anti_playlist = [], bailongoS, energiaS, fundamentalS, amplitudS, modoS, dialogoS, acusticaS, positivismoS, instrumentalS, audienciaS, tempoS, firma_tiempoS, duracionS, urlS, imagenS, nombreAS,  popS, nombreS ,trackid ,artist_data = [], userid = "", uri_S, track_uri_ref2 = [], seedTracks = [];
 
@@ -743,6 +744,42 @@ app.post('/create/playlist', function(req, res){
 });
 
 app.get('/environment', function(request, response) {
+  
+sc.server.boot().then((server) => {
+  /**
+   * This will return a Promise that will resolve with an instance of the
+   * javascript SynthDef class.
+   *
+   * It will start an sclang interpreter, compile the supercollider SynthDef,
+   * send it to the scsynth server, and then resolve the Promise with an instance
+   * of the javascript SynthDef class.
+   *
+   * If there is an error in your SynthDef then it will fail and post the error:
+   * Failed to compile SynthDef  Interpret error: ERROR: Message 'quacks' not understood.
+   */
+    
+  let freqBase = Math.round(fundamental) + 60;    
+  let freqBase2 = Math.round(fundamental2) + 60;    
+  console.log('freqBase', freqBase);    
+  console.log('freqBase2', freqBase2);    
+    
+  let def = server.synthDef('Fun2',
+    `
+  SynthDef ("Fun2", { arg outbus=0, freqOne=${freqBase}.midicps, freqTwo=${freqBase2}.midicps, apMaxdelay=0.3, apDelay=0.1, apDecay=5, amp=0.4, gate=1; 
+        var sig, in;
+        in = LocalIn.ar(1);
+	    sig = SinOsc.ar((MouseX.kr(110,1320,0, 0.4)), in * LFDNoise3.ar(freqOne, mul: (MouseY.kr(0,1))),LFDNoise3.ar(freqTwo, 1)).tanh;
+        5.do{sig = AllpassC.ar(sig, apMaxdelay,{MouseX.kr(0.2.rand + apDelay)} ! 2, apDecay)};
+        LocalOut.ar(sig.tanh);
+	    Out.ar(outbus,Pan2.ar(sig, LFNoise1.ar(0.33))*amp);
+    }).add;
+
+    `);
+    
+    server.synth(def);
+
+});
+
   response.render('pages/environment');
 });
 
@@ -1040,5 +1077,3 @@ app.get('/work.ejs', function(request, response) {
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
-
-
