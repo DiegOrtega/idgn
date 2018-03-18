@@ -1,3 +1,13 @@
+ #floating_alert {
+        position: fixed;
+        top: 170px;
+        right: 10px;
+        z-index: 5000;
+        height: 50px;
+        width: 450px;
+        text-align: center;    
+        } 
+
 @charset "UTF-8";
 /*
 

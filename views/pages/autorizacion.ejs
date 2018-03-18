@@ -5,6 +5,7 @@
 
   <head>
       <% include ../partials/header.ejs  %>
+      <% include ../partials/footer.ejs  %> 
   </head>
 
 
@@ -102,11 +103,11 @@
       <header></header>
       <% include ../pages/navbar.ejs %>
   
-          <% include ../partials/footer.ejs  %>  
+           
       <div id="login" class="contenedor row hidden-xs" style="margin-top:200px; font-family: 'Josefin Slab', serif; margin-bottom:300px;">
           <br>
           <div class="col-lg-12">
-                <h1>IDGN</h1>
+                <h1>IDGN <em>Beta</em></h1>
           </div> 
           <br>
           <!-- <h4> 
@@ -124,13 +125,20 @@
             <h3>An opportunity to break our <em>Echo Chamber</em>. </h3>
           </div>
           <br>
+          <div class="col-lg-12">
+          <div class="number-counters">  
+          <div class="counter-entry">
+                <div class="stat-number" data-to="<%=totalUsers%>" data-speed="3000">0</div> <div class="counter-label">Users</div>
+            </div>
+          </div>
+          </div>      
           <div class="centro" >
                <div class="col-lg-12 hidden-md hidden-sm hidden-xs" style="margin-bottom:25px;">
                     <a href="/login" >
                       <div class="centro btn color-1 size-2 hover-3" style="text-align: center;  width: 100%;">
                           <span style="color:black; font-family: 'Orbitron', sans-serif; text-align: center; font-size:200%;">
-                              Go ON
-                          </span>
+                              Go ON 
+                          </span> 
                       </div>
                     </a>
               </div>
@@ -159,7 +167,7 @@
       <div id="login" class="contenedor row visible-xs centro" style="font-family: 'Josefin Slab', serif; margin-top:200px; margin-bottom:200px; max-width:500px; min-width:300px !important;">
           <br>
           <div class="col-lg-12">
-                <h1>IDGN</h1>
+                <h1>IDGN <em>Beta</em></h1>
           </div> 
           <br>
           <!-- <h4> 
@@ -216,7 +224,8 @@
         <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button>
       </div>
     
-   
+    
+      
     <script id="user-profile-template" type="text/x-handlebars-template">
       <h1>Logged in as {{display_name}}</h1>
       <div class="media">
@@ -246,7 +255,6 @@
     </script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script>
       (function() {
 
@@ -326,5 +334,7 @@
       
       <% include ../partials/foot.ejs %>
   </body>
+    
+
 </html>
 

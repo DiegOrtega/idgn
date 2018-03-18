@@ -10,11 +10,15 @@
     "start": "node index.js"
   },
   "dependencies": {
+    "body-parser": "*",
     "ejs": "2.4.1",
     "express": "4.13.3",
+    "method-override": "^2.3.8",
+    "morgan": "*",
+    "sanitize-html": "^1.14.1",
+    "shuffle-array": "^1.0.1",
     "spotify-web-api-node": "^2.3.6",
-    "body-parser": "*",
-      "morgan": "*"
+    "neo4j-driver": "*"
   },
   "repository": {
     "type": "git",
@@ -25,5 +29,8 @@
     "heroku",
     "express"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
 }
