@@ -22,7 +22,8 @@
       "request": "*",
       "cookie-parser": "*",
       "fs": "*",
-      "logger": "*"
+      "logger": "*",
+      "supercolliderjs":"*"
   },
   "repository": {
     "type": "git",
