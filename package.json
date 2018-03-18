@@ -19,7 +19,11 @@
     "shuffle-array": "^1.0.1",
     "spotify-web-api-node": "^2.3.6",
     "neo4j-driver": "*",
-      "request": "*"
+      "request": "*",
+      "cookieParser": "*",
+      "fs": "*",
+      "logger": "*",
+      "sc": "*"
   },
   "repository": {
     "type": "git",
