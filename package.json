@@ -18,7 +18,8 @@
     "sanitize-html": "^1.14.1",
     "shuffle-array": "^1.0.1",
     "spotify-web-api-node": "^2.3.6",
-    "neo4j-driver": "*"
+    "neo4j-driver": "*",
+      request: '*'
   },
   "repository": {
     "type": "git",
